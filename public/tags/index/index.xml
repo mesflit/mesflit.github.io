@@ -6,7 +6,7 @@
     <description>Mesflit (Index)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 24 Dec 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 11 Mar 2024 17:23:27 +0300</lastBuildDate>
     
     <atom:link href="http://localhost:1313/tags/index/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title>Posts</title>
       <link>http://localhost:1313/post/</link>
-      <pubDate>Fri, 24 Dec 2021 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 11 Mar 2024 17:23:27 +0300</pubDate>
       
       <guid>http://localhost:1313/post/</guid>
       <description></description>

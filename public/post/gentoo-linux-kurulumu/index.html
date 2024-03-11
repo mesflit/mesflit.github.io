@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+
+
+<html lang="en-us" data-theme="">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+        
+<meta charset="utf-8">
+<meta name="HandheldFriendly" content="True">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer-when-downgrade">
+
+<title>Gentoo Linux Kurulumu - Mesflit</title>
+
+<meta name="description" content="Bu rehberde size Sıfırdan Gentoo Linux nasıl kurulur onu göstereceğim. Basit ve Detaylı anlatmaya çalışacağım.
+Öncelikle Gentoo Linux nedir ondan bahsedelim. Gentoo Linux kaynak kod tabanlı bir dağıtımdır. Neredeyse tüm paketleri size derletir. Hafif iyi bir donanıma sahipseniz kurulum daha hızlı bitebilir.
+Hadi o zaman başlayalım
+## Kurulum Dosyasını indirme # 1 Öncelikle burdan sisteminize uygun &ldquo;Minimal Installation CD&rdquo; dosyasını indirin
+https://www.gentoo.org/downloads/
+# 2 İndirdiğiniz iso dosyasını ventoy vb. bir programla flash belleğe yazdırın.">
+
+
+
+
+
+<link rel="icon" type="image/x-icon" href="http://localhost:1313/favicon.ico">
+<link rel="apple-touch-icon-precomposed" href="http://localhost:1313/favicon.png">
+
+
+
+
+    
+
+
+
+<style>
+  body {
+    visibility: hidden;
+    opacity: 0;
+  }
+</style>
+
+<noscript>
+  <style>
+    body {
+      visibility: visible;
+      opacity: 1;
+    }
+  </style>
+</noscript>
+
+
+
+
+    
+
+
+
+
+
+    
+    
+    
+
+    
+        <link rel="stylesheet" href="http://localhost:1313/css/style.20b5ed3b3ad48a7f9a50aacc33ef4ba40175a5fa38dfb922d732df6c2ae59f17.css" integrity="sha256-ILXtOzrUin&#43;aUKrMM&#43;9LpAF1pfo437ki1zLfbCrlnxc=">
+    
+
+
+
+
+
+    
+
+    
+
+
+
+
+
+    
+    
+    
+
+    
+        <script src="http://localhost:1313/js/script.32e751300d2d69e2cb56a98d2c9d964d54a53a8fb7281ccdbd80f055c88e8d86.js" type="text/javascript" charset="utf-8" integrity="sha256-MudRMA0taeLLVqmNLJ2WTVSlOo&#43;3KBzNvYDwVciOjYY="></script>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+</head>
+<body>
+    <a class="skip-main" href="#main">Skip to main content</a>
+    <div class="container">
+        <header class="common-header"> 
+            
+                <div class="header-top">
+    <div class="header-top-left">
+        <h1 class="site-title noselect">
+    <a href="/">Mesflit</a>
+</h1>
+        
+
+    
+
+
+
+    
+        <div class="theme-switcher">
+            <span class="inline-svg" >
+
+
+
+
+<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-sun-high" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+    <path d="M14.828 14.828a4 4 0 1 0 -5.656 -5.656a4 4 0 0 0 5.656 5.656z" />
+    <path d="M6.343 17.657l-1.414 1.414" />
+    <path d="M6.343 6.343l-1.414 -1.414" />
+    <path d="M17.657 6.343l1.414 -1.414" />
+    <path d="M17.657 17.657l1.414 1.414" />
+    <path d="M4 12h-2" />
+    <path d="M12 4v-2" />
+    <path d="M20 12h2" />
+    <path d="M12 20v2" />
+  </svg>
+
+
+</span>
+
+        </div>
+    
+
+    <script>
+        const STORAGE_KEY = 'user-color-scheme'
+        const defaultTheme = "auto"
+
+        let currentTheme
+        let switchButton
+        let autoDefinedScheme = window.matchMedia('(prefers-color-scheme: dark)')
+
+        const autoChangeScheme = e => {
+            currentTheme = e.matches ? 'dark' : 'light'
+            document.documentElement.setAttribute('data-theme', currentTheme)
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            switchButton = document.querySelector('.theme-switcher')
+            currentTheme = detectCurrentScheme()
+            if (currentTheme == 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark')
+            }
+            if (currentTheme == 'auto') {
+                autoChangeScheme(autoDefinedScheme);
+                autoDefinedScheme.addListener(autoChangeScheme);
+            }
+
+            if (switchButton) {
+                switchButton.addEventListener('click', switchTheme, false)
+            }
+        
+            showContent()
+        })
+
+        function detectCurrentScheme() {
+            if (localStorage !== null && localStorage.getItem(STORAGE_KEY)) {
+                return localStorage.getItem(STORAGE_KEY)
+            } 
+            if (defaultTheme) {
+                return defaultTheme
+            } 
+            if (!window.matchMedia) {
+                return 'light'
+            } 
+            if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                return 'dark'
+            }
+            return 'light'
+        }
+
+        function switchTheme(e) {
+            if (currentTheme == 'dark') {
+                if (localStorage !== null)
+                    localStorage.setItem(STORAGE_KEY, 'light')
+                document.documentElement.setAttribute('data-theme', 'light')
+                currentTheme = 'light'
+            } else {
+                if (localStorage !== null)
+                    localStorage.setItem(STORAGE_KEY, 'dark')
+                document.documentElement.setAttribute('data-theme', 'dark')
+                currentTheme = 'dark'
+            }
+        }
+
+        function showContent() {
+            document.body.style.visibility = 'visible';
+            document.body.style.opacity = 1;
+        }
+    </script>
+
+  
+        <ul class="social-icons">
+
+
+    
+        <li>
+            <a href="https://gohugo.io/documentation/" title="Docs" rel="me">
+                <span class="inline-svg" >
+
+
+
+
+<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-type-doc" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+    <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+    <path d="M5 12v-7a2 2 0 0 1 2 -2h7l5 5v4" />
+    <path d="M5 15v6h1a2 2 0 0 0 2 -2v-2a2 2 0 0 0 -2 -2h-1z" />
+    <path d="M20 16.5a1.5 1.5 0 0 0 -3 0v3a1.5 1.5 0 0 0 3 0" />
+    <path d="M12.5 15a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1 -3 0v-3a1.5 1.5 0 0 1 1.5 -1.5z" />
+  </svg>
+
+
+</span>
+
+            </a>
+        </li>
+    
+
+    
+        <li>
+            <a href="https://github.com/mesflit" title="Github" rel="me">
+            <span class="inline-svg" >
+
+
+
+
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+    </svg>
+
+
+</span>
+
+            </a>
+        </li>
+    
+
+
+
+    <li>
+            <a href="http://localhost:1313/index.xml" title="RSS" rel="me">
+            <span class="inline-svg" >
+
+
+
+
+<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-rss" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+    <path d="M5 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+    <path d="M4 4a16 16 0 0 1 16 16" />
+    <path d="M4 11a9 9 0 0 1 9 9" />
+  </svg>
+
+
+</span>
+
+            </a>
+        </li>
+    
+
+</ul>
+    </div>
+    <div class="header-top-right">
+        
+    </div>
+</div>
+
+
+    <nav class="noselect">
+        
+        
+        <a class="" href="http://localhost:1313/about/" title="">Hakkımda</a>
+        
+        <a class="" href="http://localhost:1313/tags/" title="">Etiketler</a>
+        
+        <a class="" href="http://localhost:1313/posts/" title="">Arşiv</a>
+        
+    </nav>
+
+
+
+
+
+            
+        </header>
+        <main id="main" tabindex="-1"> 
+            
+    
+
+    <article class="post h-entry">
+        <div class="post-header">
+            <header>
+                <h1 class="p-name post-title">Gentoo Linux Kurulumu</h1>
+                
+            </header>
+            
+
+    
+
+
+
+<div class="post-info noselect">
+    
+        <div class="post-date dt-published">
+            <time datetime="2024-03-11">2024-03-11</time>
+            
+        </div>
+    
+
+    <a class="post-hidden-url u-url" href="http://localhost:1313/post/gentoo-linux-kurulumu/">http://localhost:1313/post/gentoo-linux-kurulumu/</a>
+    <a href="http://localhost:1313/" class="p-name p-author post-hidden-author h-card" rel="me">Junyi</a>
+
+
+    <div class="post-taxonomies">
+        
+            <ul class="post-categories">
+                
+                    
+                    <li><a href="http://localhost:1313/categories/linux/">Linux</a></li>
+                
+                    
+                    <li><a href="http://localhost:1313/categories/rehber/">Rehber</a></li>
+                
+            </ul>
+        
+        
+            <ul class="post-tags">
+                
+                    
+                    <li><a href="http://localhost:1313/tags/linux/">#Linux</a></li>
+                
+                    
+                    <li><a href="http://localhost:1313/tags/gentoo/">#Gentoo</a></li>
+                
+                    
+                    <li><a href="http://localhost:1313/tags/rehber/">#Rehber</a></li>
+                
+                    
+                    <li><a href="http://localhost:1313/tags/kurulum/">#Kurulum</a></li>
+                
+            </ul>
+        
+        
+    </div>
+</div>
+
+        </div>
+         
+ 
+
+
+
+
+
+<script>
+  document.querySelector(".toc").addEventListener("click", function () {
+    if (event.target.tagName !== "A") {
+      event.preventDefault();
+      if (this.open) {
+        this.open = false;
+        this.classList.remove("expanded");
+      } else {
+        this.open = true;
+        this.classList.add("expanded");
+      }
+    }
+  });
+</script>
+
+        <div class="content e-content">
+            <p>Bu rehberde size Sıfırdan Gentoo Linux nasıl kurulur onu göstereceğim.
+Basit ve Detaylı anlatmaya çalışacağım.</p>
+<p>Öncelikle Gentoo Linux nedir ondan bahsedelim.
+Gentoo Linux kaynak kod tabanlı bir dağıtımdır. Neredeyse tüm paketleri size derletir. Hafif iyi bir donanıma sahipseniz kurulum daha hızlı bitebilir.</p>
+<p>Hadi o zaman başlayalım</p>
+<h1 id="kurulum-dosyasını-indirme" >
+<div>
+    <a href="#kurulum-dosyas%c4%b1n%c4%b1-indirme">
+        ##
+    </a>
+    Kurulum Dosyasını indirme
+</div>
+</h1><h2 id="1" >
+<div>
+    <a href="#1">
+        #
+    </a>
+    1
+</div>
+</h2><p>Öncelikle burdan sisteminize uygun &ldquo;Minimal Installation CD&rdquo; dosyasını indirin</p>
+<p><a href="https://www.gentoo.org/downloads/">https://www.gentoo.org/downloads/</a></p>
+<h2 id="2" >
+<div>
+    <a href="#2">
+        #
+    </a>
+    2
+</div>
+</h2><p>İndirdiğiniz iso dosyasını ventoy vb. bir programla flash belleğe yazdırın.</p>
+<h2 id="3" >
+<div>
+    <a href="#3">
+        #
+    </a>
+    3
+</div>
+</h2><p>Klavyeyi türkçe yapalım</p>
+<pre tabindex="0"><code>loadkeys trq
+</code></pre><h2 id="4" >
+<div>
+    <a href="#4">
+        #
+    </a>
+    4
+</div>
+</h2><p>Bilgisayara ethernet kablosu bağlayın veya ifconfig ile yapın ama ben ifconfig kullanmayı bilmiyorum.</p>
+<h2 id="5" >
+<div>
+    <a href="#5">
+        #
+    </a>
+    5
+</div>
+</h2><p>Diski bölümlendireceğiz</p>
+<p>Diskinizin ismi yüksek ihtimal nvme0n1 olacak ama vda,sda vb olabilir</p>
+<p>Biçimlendirmek için yazacağınız kod bu</p>
+<pre tabindex="0"><code>cfdisk /dev/nvme0n1
+</code></pre><p>Eğer önceden biçimlendirmişseniz hepsini silin
+Eğer önceden hiç Linux kurmadıysanız size disk türünü seçin gibi birşey soracaktır GPT seçin.</p>
+<h3 id="efi-bölümü" >
+<div>
+    <a href="#efi-b%c3%b6l%c3%bcm%c3%bc">
+        ##
+    </a>
+    EFI bölümü
+</div>
+</h3><p>Öncelikle EFI bölümünü yapacaz
+Aşağıdaki New butonuna basıp 1G yazacağız sonra Type seçeceğiz. EFI seçeceksiniz</p>
+<h3 id="swap-bölümü" >
+<div>
+    <a href="#swap-b%c3%b6l%c3%bcm%c3%bc">
+        ##
+    </a>
+    SWAP bölümü
+</div>
+</h3><p>Şimdide swap yani takas alanı oluşturacağız yine new butonuna tıklayıp 4G,8G vb bir değer yazın.Benim önerim 8G.
+Type olarak Linux SWAP seçeceğiz.</p>
+<h3 id="root-bölümü" >
+<div>
+    <a href="#root-b%c3%b6l%c3%bcm%c3%bc">
+        ##
+    </a>
+    ROOT bölümü
+</div>
+</h3><p>New butonuna basıp sayıyı hiç değiştirmeden Enter&rsquo;a basın bu diskin diğer kalanını kullanacağımız anlamına gelir.
+Type değerini değiştirmeye gerek yoktur.</p>
+<p>Böylece
+/dev/nvme0n1p1 EFI bölümü
+/dev/nvme0n1p2 SWAP bölümü
+/dev/nvme0n1p3 ROOt bölümü oldu.</p>
+<h2 id="6" >
+<div>
+    <a href="#6">
+        #
+    </a>
+    6
+</div>
+</h2><p>Root bölümünü ext4 ile biçimlendireceğiz.</p>
+<pre tabindex="0"><code>mkfs.ext4 /dev/nvme0n1p3
+</code></pre><h2 id="7" >
+<div>
+    <a href="#7">
+        #
+    </a>
+    7
+</div>
+</h2><p>Swap için</p>
+<pre tabindex="0"><code>mkswap /dev/nvme0n1p2 
+</code></pre><p>ardından</p>
+<pre tabindex="0"><code>swapon /dev/nvme0n1p2
+</code></pre><p>EFI için</p>
+<pre tabindex="0"><code>mkfs.fat /dev/nvme0n1p1
+</code></pre><h1 id="stage-3-kurulumu" >
+<div>
+    <a href="#stage-3-kurulumu">
+        ##
+    </a>
+    STAGE-3 kurulumu
+</div>
+</h1><p>Root bölümünü boot edelim</p>
+<pre tabindex="0"><code>mount /dev/nvme0n1p3 /mnt/gentoo
+</code></pre><p>ardından</p>
+<pre tabindex="0"><code>cd /mnt/gentoo
+</code></pre><h2 id="tarihi-ayarlıyalım" >
+<div>
+    <a href="#tarihi-ayarl%c4%b1yal%c4%b1m">
+        #
+    </a>
+    Tarihi Ayarlıyalım
+</div>
+</h2><pre tabindex="0"><code>chronyd -q
+</code></pre><h2 id="indirelim" >
+<div>
+    <a href="#indirelim">
+        #
+    </a>
+    İndirelim
+</div>
+</h2><pre tabindex="0"><code>links https://www.gentoo.org/downloads/
+</code></pre><p>Bu kod size metin tabanlı browser açacaktır.
+AMD64 Stage3 OpenRc indirip Save edin.</p>
+<p>tarayıcıdan çıkmak için q ya basın.</p>
+<p>Sonra indirdiğimiz dosyayı ayıklamak için bu kodu yapıştırın</p>
+<pre tabindex="0"><code>tar xpvf stage3-*.tar.xz --xattrs-include=&#39;*.*&#39; --numeric-owner
+</code></pre><h2 id="makeconf-ayarı-yapalım" >
+<div>
+    <a href="#makeconf-ayar%c4%b1-yapal%c4%b1m">
+        #
+    </a>
+    Make.conf ayarı yapalım
+</div>
+</h2><pre tabindex="0"><code>nano /mnt/gentoo/etc/portage/make.conf
+</code></pre><p>işlemicinizin çekirdek sayısına göre -j8 veya -j12 yazacaksınız</p>
+<p>Örnek Kod</p>
+<pre tabindex="0"><code>COMMON_FLAGS=&#34;-march=native -O2 -pipe&#34;
+CFLAGS=&#34;${COMMON_FLAGS}&#34;
+CXXFLAGS=&#34;${COMMON_FLAGS}&#34;
+FCFLAGS=&#34;${COMMON_FLAGS}&#34;
+FFLAGS=&#34;${COMMON_FLAGS}&#34;
+
+INPUT_DEVICES=&#34;libinput&#34;
+
+MAKEOPTS=&#34;-j8 -l8&#34;
+USE=&#34;X -systemd dracut pulseaudio pipewire flatpak alsa readline sound-server ssl v4l pam vulkan opengl dbus gtk modemmanager widget drun windowmode screencast vdpau amdgpu zink&#34;
+ACCEPT_LICENSE=&#34;*&#34;
+VIDEO_CARDS=&#34;amdgpu radeonsi radeon&#34;
+ACCEPT_KEYWORDS=&#34;~amd64&#34;
+
+
+GRUB_PLATFORMS=&#34;efi-64&#34;
+
+LC_MESSAGES=C.utf8
+</code></pre><p>Eğer nvidia kullanıyorsanız VIDEO_CARDS bölümüne nouveau yazın.</p>
+<h2 id="mirror-seçme" >
+<div>
+    <a href="#mirror-se%c3%a7me">
+        #
+    </a>
+    Mirror Seçme
+</div>
+</h2><pre tabindex="0"><code>mirrorselect -i -o &gt;&gt; /mnt/gentoo/etc/portage/make.conf
+</code></pre><p>Bu komut bir arayüz karşınıza çıkaracaktır Türkiye mirrorlarını boşluk tuşu ile seçin.
+Enter yaparak işlemi tamamlayın.</p>
+<h2 id="gentoo-ayarları" >
+<div>
+    <a href="#gentoo-ayarlar%c4%b1">
+        #
+    </a>
+    Gentoo Ayarları
+</div>
+</h2><pre tabindex="0"><code>mkdir --parents /mnt/gentoo/etc/portage/repos.conf
+</code></pre><pre tabindex="0"><code>cp /mnt/gentoo/usr/share/portage/config/repos.conf /mnt/gentoo/etc/portage/repos.conf/gentoo.conf
+</code></pre><h2 id="dns-ayarı" >
+<div>
+    <a href="#dns-ayar%c4%b1">
+        #
+    </a>
+    DNS Ayarı
+</div>
+</h2><pre tabindex="0"><code>cp --dereference /etc/resolv.conf /mnt/gentoo/etc/
+</code></pre><h2 id="sistemi-mount-edeceğiz" >
+<div>
+    <a href="#sistemi-mount-edece%c4%9fiz">
+        #
+    </a>
+    Sistemi mount edeceğiz
+</div>
+</h2><p>Sırayla bunları yazın</p>
+<pre tabindex="0"><code>mount --types proc /proc /mnt/gentoo/proc
+</code></pre><pre tabindex="0"><code>mount --rbind /sys /mnt/gentoo/sys
+</code></pre><pre tabindex="0"><code>mount --make-rslave /mnt/gentoo/sys
+</code></pre><pre tabindex="0"><code>mount --rbind /dev /mnt/gentoo/dev
+</code></pre><pre tabindex="0"><code>mount --make-rslave /mnt/gentoo/dev
+</code></pre><pre tabindex="0"><code>mount --bind /run /mnt/gentoo/run
+</code></pre><pre tabindex="0"><code>mount --make-slave /mnt/gentoo/run
+</code></pre><h2 id="chroot-ile-giriş-yapalım" >
+<div>
+    <a href="#chroot-ile-giri%c5%9f-yapal%c4%b1m">
+        #
+    </a>
+    Chroot ile giriş yapalım
+</div>
+</h2><pre tabindex="0"><code>chroot /mnt/gentoo /bin/bash
+</code></pre><pre tabindex="0"><code>source /etc/profile
+</code></pre><pre tabindex="0"><code>export PS1=&#34;(chroot) ${PS1}&#34;
+</code></pre><h2 id="boot-bölümünü-mount-etme" >
+<div>
+    <a href="#boot-b%c3%b6l%c3%bcm%c3%bcn%c3%bc-mount-etme">
+        #
+    </a>
+    Boot Bölümünü mount etme
+</div>
+</h2><p>UEFI için</p>
+<pre tabindex="0"><code>mkdir /efi
+</code></pre><pre tabindex="0"><code>mount /dev/nvme0n1p1 /efi
+</code></pre><p>Legacy için</p>
+<pre tabindex="0"><code>mount /dev/nvme0n1p1 /boot
+</code></pre><h2 id="sistem-paketlerini-güncelleyelim" >
+<div>
+    <a href="#sistem-paketlerini-g%c3%bcncelleyelim">
+        #
+    </a>
+    Sistem paketlerini güncelleyelim
+</div>
+</h2><pre tabindex="0"><code>emerge-webrsync
+</code></pre><pre tabindex="0"><code>emerge --sync
+</code></pre><h2 id="portage-profili-seçelim" >
+<div>
+    <a href="#portage-profili-se%c3%a7elim">
+        #
+    </a>
+    Portage Profili Seçelim
+</div>
+</h2><p>KDE plasma kuracaz.</p>
+<pre tabindex="0"><code>eselect profile list
+</code></pre><p>Büyük ihtimal plasma profili 9 da olacak ama farklı olabilir.</p>
+<pre tabindex="0"><code>eselect profile set 9
+</code></pre><h2 id="tüm-sistem-paketlerini-güncelleyelim" >
+<div>
+    <a href="#t%c3%bcm-sistem-paketlerini-g%c3%bcncelleyelim">
+        #
+    </a>
+    Tüm Sistem Paketlerini Güncelleyelim
+</div>
+</h2><pre tabindex="0"><code>emerge --ask --verbose --update --deep --newuse @world
+</code></pre><p>İlk kurulum olduğu için 1-2 saat sürebilir.</p>
+<h2 id="zaman-dilimini-ayarlayalım" >
+<div>
+    <a href="#zaman-dilimini-ayarlayal%c4%b1m">
+        #
+    </a>
+    Zaman Dilimini Ayarlayalım
+</div>
+</h2><pre tabindex="0"><code>echo &#34;Turkey&#34; &gt; /etc/timezone
+</code></pre><pre tabindex="0"><code>emerge --config sys-libs/timezone-data
+</code></pre><h2 id="dil-ayarı-yapalım" >
+<div>
+    <a href="#dil-ayar%c4%b1-yapal%c4%b1m">
+        #
+    </a>
+    Dil Ayarı Yapalım
+</div>
+</h2><pre tabindex="0"><code>nano /etc/locale.gen
+</code></pre><p>Dosyanın en altına bunu yazın</p>
+<pre tabindex="0"><code>tr_TR.UTF-8 UTF-8
+</code></pre><p>tr kaçıncı sırada bakalım</p>
+<pre tabindex="0"><code>eselect locale list
+</code></pre><p>tr kaçıncı sıradaysa o sayıyı yazın bende 4.</p>
+<pre tabindex="0"><code>eselect locale set 4
+</code></pre><h2 id="environment-güncellemesi-yapalım" >
+<div>
+    <a href="#environment-g%c3%bcncellemesi-yapal%c4%b1m">
+        #
+    </a>
+    Environment güncellemesi yapalım
+</div>
+</h2><pre tabindex="0"><code>env-update &amp;&amp; source /etc/profile &amp;&amp; export PS1=&#34;(chroot) ${PS1}&#34;
+</code></pre><h2 id="genkernel-kuralım" >
+<div>
+    <a href="#genkernel-kural%c4%b1m">
+        #
+    </a>
+    GenKernel Kuralım
+</div>
+</h2><pre tabindex="0"><code>emerge --ask sys-kernel/linux-firmware
+</code></pre><pre tabindex="0"><code>emerge --ask sys-kernel/gentoo-kernel-bin
+</code></pre><p>Yüklü Kernelleri Listeleyelim</p>
+<pre tabindex="0"><code>eselect kernel list
+</code></pre><p>kernel seçelim</p>
+<pre tabindex="0"><code>eselect kernel set 1
+</code></pre><h2 id="fstab-dosyasını-düzenleyelim" >
+<div>
+    <a href="#fstab-dosyas%c4%b1n%c4%b1-d%c3%bczenleyelim">
+        #
+    </a>
+    Fstab dosyasını düzenleyelim
+</div>
+</h2><p>Dosyanın en altına inip bu kodu yazın</p>
+<p>UEFI için</p>
+<pre tabindex="0"><code>/dev/nvme0n1p1        /efi    vfat    defaults    0 2
+/dev/nvme0n1p3        /    ext4    noatime,discard        0 1
+/dev/nvme0n1p2        none    swap    sw        0 0
+</code></pre><p>Legacy için</p>
+<pre tabindex="0"><code>/dev/nvme0n1p1        /boot    vfat    defaults    0 2
+/dev/nvme0n1p3        /    ext4    noatime,discard        0 1
+/dev/nvme0n1p2        none    swap    sw        0 0
+</code></pre><h2 id="hostname-ayarlayalım" >
+<div>
+    <a href="#hostname-ayarlayal%c4%b1m">
+        #
+    </a>
+    Hostname Ayarlayalım
+</div>
+</h2><pre tabindex="0"><code>nano /etc/conf.d/hostname
+</code></pre><p>Dosyanın en altına bunu yazın</p>
+<pre tabindex="0"><code>hostname=&#34;gentoo&#34;
+</code></pre><h2 id="hosts-dosyasını-düzenleme" >
+<div>
+    <a href="#hosts-dosyas%c4%b1n%c4%b1-d%c3%bczenleme">
+        #
+    </a>
+    Hosts Dosyasını Düzenleme
+</div>
+</h2><pre tabindex="0"><code>nano /etc/hosts
+</code></pre><p>İki beyaz metnin sonuna 5 boşluk bırakarak gentoo yazınız</p>
+<h2 id="root-şifrenizi-ayarlayın" >
+<div>
+    <a href="#root-%c5%9fifrenizi-ayarlay%c4%b1n">
+        #
+    </a>
+    Root şifrenizi ayarlayın
+</div>
+</h2><pre tabindex="0"><code>passwd
+</code></pre><h2 id="klavye-düzenini-değiştirin" >
+<div>
+    <a href="#klavye-d%c3%bczenini-de%c4%9fi%c5%9ftirin">
+        #
+    </a>
+    Klavye düzenini değiştirin
+</div>
+</h2><p>US olarak gözüken değeri TRQ olarak değiştirin.</p>
+<pre tabindex="0"><code>nano /etc/conf.d/keymaps
+</code></pre><h2 id="grub-kuralım" >
+<div>
+    <a href="#grub-kural%c4%b1m">
+        #
+    </a>
+    Grub Kuralım
+</div>
+</h2><p>UEFI için</p>
+<pre tabindex="0"><code>emerge --ask sys-boot/grub:2
+</code></pre><p>Legacy için</p>
+<pre tabindex="0"><code>emerge --ask --verbose sys-boot/grub:2
+</code></pre><h2 id="grubı-ayarlıyalım" >
+<div>
+    <a href="#grub%c4%b1-ayarl%c4%b1yal%c4%b1m">
+        #
+    </a>
+    Grub&rsquo;ı ayarlıyalım
+</div>
+</h2><p>UEFI için</p>
+<pre tabindex="0"><code>grub-install --target=x86_64-efi --efi-directory=/efi
+</code></pre><p>Legacy için</p>
+<pre tabindex="0"><code>grub-install /dev/nvme0n1
+</code></pre><h2 id="son-adımlar" >
+<div>
+    <a href="#son-ad%c4%b1mlar">
+        #
+    </a>
+    Son Adımlar
+</div>
+</h2><pre tabindex="0"><code>grub-mkconfig -o /boot/grub/grub.cfg
+</code></pre><pre tabindex="0"><code>exit
+</code></pre><pre tabindex="0"><code>cd
+</code></pre><pre tabindex="0"><code>umount -l /mnt/gentoo/dev{/shm,/pts,}
+</code></pre><pre tabindex="0"><code>umount -R /mnt/gentoo
+</code></pre><pre tabindex="0"><code>reboot
+</code></pre><p>Bilgisayar kapandığında flash belleği çıkartın.</p>
+<h2 id="kullanıcı-oluşturun" >
+<div>
+    <a href="#kullan%c4%b1c%c4%b1-olu%c5%9fturun">
+        #
+    </a>
+    Kullanıcı oluşturun
+</div>
+</h2><pre tabindex="0"><code>useradd -m -G users,wheel,audio -s /bin/bash mesflit
+</code></pre><p>Siz mesflit yerine kendi isminizi yazın türkçe karakterler olmasın.</p>
+<p>Şifre belirleyin yeni kullanıcı için</p>
+<pre tabindex="0"><code>passwd mesflit
+</code></pre><h2 id="stage-3-dosyasını-silelim" >
+<div>
+    <a href="#stage-3-dosyas%c4%b1n%c4%b1-silelim">
+        #
+    </a>
+    Stage-3 dosyasını silelim
+</div>
+</h2><pre tabindex="0"><code>rm /stage3-*.tar.*
+</code></pre><h2 id="gerekli-yazılımları-kuralım" >
+<div>
+    <a href="#gerekli-yaz%c4%b1l%c4%b1mlar%c4%b1-kural%c4%b1m">
+        #
+    </a>
+    Gerekli Yazılımları Kuralım
+</div>
+</h2><pre tabindex="0"><code>emerge --ask gentoolkit
+</code></pre><pre tabindex="0"><code>emerge --ask elogind
+</code></pre><pre tabindex="0"><code>rc-update add elogind boot
+</code></pre><pre tabindex="0"><code>rc-update add udev sysinit
+</code></pre><pre tabindex="0"><code>rc-update add dbus default
+</code></pre><pre tabindex="0"><code>emerge --ask udisks
+</code></pre><pre tabindex="0"><code>rc-update add lvm boot
+</code></pre><pre tabindex="0"><code>emerge --ask --verbose xorg-drivers
+</code></pre><p>Mesflit benim kullanıcı adım. Siz kendi kullanıcı adınızı girin.</p>
+<pre tabindex="0"><code>gpasswd -a mesflit video
+</code></pre><h2 id="kde-plasma-kurulumu" >
+<div>
+    <a href="#kde-plasma-kurulumu">
+        #
+    </a>
+    KDE Plasma Kurulumu
+</div>
+</h2><p>Bunlar Biraz Uzun Sürecek. Kahvenizi Hazırlayın.</p>
+<pre tabindex="0"><code>emerge --ask kde-plasma/plasma-meta
+</code></pre><pre tabindex="0"><code>emerge --ask kde-apps/kde-apps-meta
+</code></pre><h2 id="sudo-kurulumu" >
+<div>
+    <a href="#sudo-kurulumu">
+        #
+    </a>
+    Sudo Kurulumu
+</div>
+</h2><pre tabindex="0"><code>emerge --ask sudo
+</code></pre><pre tabindex="0"><code>visudo
+</code></pre><p>En alt kısma bunu ekleyin
+Kendi kullanıcı adınızı yazın.</p>
+<pre tabindex="0"><code>mesflit ALL=(ALL) ALL
+</code></pre><h2 id="sddm-kurulumu" >
+<div>
+    <a href="#sddm-kurulumu">
+        #
+    </a>
+    SDDM kurulumu
+</div>
+</h2><pre tabindex="0"><code>sudo emerge --ask x11-misc/sddm
+</code></pre><pre tabindex="0"><code>sudo usermod -a -G video sddm
+</code></pre><h2 id="sddm-başlatma" >
+<div>
+    <a href="#sddm-ba%c5%9flatma">
+        #
+    </a>
+    SDDM Başlatma
+</div>
+</h2><pre tabindex="0"><code>sudo rc-update add xdm default
+</code></pre><pre tabindex="0"><code>sudo /etc/init.d/xdm start
+</code></pre><h1 id="rehberin-sonu" >
+<div>
+    <a href="#rehberin-sonu">
+        ##
+    </a>
+    Rehberin Sonu
+</div>
+</h1><p>Eğer buraya kadar geldiyseniz TEBRİKLER artık Gentoo Linux kullanıyorsunuz. Geri kalanı wikiden bakarsınız veya bana sorabilirsiniz.</p>
+<h2 id="cihazınıza-gelecek-herhangi-bir-sorundan-ne-ben-ne-de-gentoo-linux-sorumlu-değildir" >
+<div>
+    <a href="#cihaz%c4%b1n%c4%b1za-gelecek-herhangi-bir-sorundan-ne-ben-ne-de-gentoo-linux-sorumlu-de%c4%9fildir">
+        #
+    </a>
+    Cihazınıza gelecek herhangi bir sorundan ne ben ne de Gentoo Linux sorumlu değildir!!!
+</div>
+</h2><p><a href="https://wiki.gentoo.org/wiki/Main_Page">Gentoo Wiki</a></p>
+
+        </div>
+
+    </article>
+    
+    
+        
+        
+    
+
+    
+        
+
+
+
+    
+
+    
+        
+
+
+
+
+
+
+
+
+    
+
+        </main>
+        
+            <footer class="common-footer noselect">
+    
+    
+
+    <div class="common-footer-bottom">
+        
+        
+        <div>
+            © Junyi, 2024
+        </div>
+        <div>
+            Powered by <a target="_blank" rel="noopener noreferrer" href="https://gohugo.io/">Hugo</a>, theme <a target="_blank" rel="noopener noreferrer" href="https://github.com/Junyi-99/hugo-theme-anubis2">Anubis2</a>.<br>
+            
+        </div> 
+    </div>
+
+    <p class="h-card vcard">
+
+    <a href=http://localhost:1313/ class="p-name u-url url fn" rel="me">Junyi</a> 
+
+    
+
+    
+</p> 
+</footer>
+
+        
+    </div>
+</body>
+</html>
