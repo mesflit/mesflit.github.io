@@ -1,0 +1,74 @@
+baseURL = "https://mesflit.github.io"
+languageCode = "en-us"
+title = "Mesflit"
+theme = "anubis2"
+paginate = 3
+
+disqusShortname = ""
+googleAnalytics = ""
+
+[author]
+name = "Junyi"
+
+[params]
+author = "Junyi"
+description = "Anubis2 is another simple minimalist theme for Hugo blog engine."
+dateFormat = "2006-01-02"
+paginationSinglePost = true
+style = "auto"
+readMore = false
+readNextPosts = 2
+copyCodeButton = true
+rssAsSocialIcon = true
+mathjax = false
+
+# Graphcomment support
+graphcommentId = ""
+
+# utteranc.es support
+utterancesRepo = ""  # mandatory
+utterancesTheme = "" # optional
+utterancesIssue = "" # optional
+utterancesLabel = "" # optional
+
+# Giscus support
+GiscusRepo = ""  # mandatory
+GiscusRepoId = ""  # mandatory
+GiscusCategory = "Announcements" # mandatory
+GiscusCategoryId = ""  # mandatory
+GiscusLazyLoad = false  # optional
+
+[[params.social]]
+id = "docs"
+url = "https://gohugo.io/documentation/"
+
+[[params.social]]
+id = "github"
+url = "https://github.com/mesflit"
+
+[menu]
+
+[[menu.main]]
+identifier = "about"
+name = "Hakkımda"
+url = "/about/"
+weight = 1
+
+[[menu.main]]
+identifier = "tags"
+name = "Etiketler"
+url = "/tags/"
+weight = 2
+
+[[menu.main]]
+name = "Arşiv"
+identifier = "archive"
+url = "/posts/"
+weight = 3
+
+[taxonomies]
+category = "categories"
+tag = "tags"
+
+[markup.goldmark.renderer]
+unsafe = true
