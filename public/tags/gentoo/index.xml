@@ -106,7 +106,7 @@ Type değerini değiştirmeye gerek yoktur.&lt;/p&gt;
 &lt;p&gt;Böylece
 /dev/nvme0n1p1 EFI bölümü
 /dev/nvme0n1p2 SWAP bölümü
-/dev/nvme0n1p3 ROOt bölümü oldu.&lt;/p&gt;
+/dev/nvme0n1p3 ROOT bölümü oldu.&lt;/p&gt;
 &lt;h2 id=&#34;6&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#6&#34;&gt;
@@ -482,15 +482,39 @@ Kendi kullanıcı adınızı yazın.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/h2&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;sudo emerge --ask x11-misc/sddm
 &lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;sudo usermod -a -G video sddm
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;sddm-ayarlaması&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#sddm-ayarlamas%c4%b1&#34;&gt;
+        #
+    &lt;/a&gt;
+    SDDM ayarlaması
+&lt;/div&gt;
+&lt;/h2&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;mkdir -p /etc/sddm.conf.d
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;sudo /etc/sddm.conf.d/override.conf
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Bunu Dosyanın en altına ekleyin&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;[X11]
+DisplayCommand=/etc/sddm/scripts/Xsetup
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Sonra&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;mkdir -p /etc/sddm/scripts 
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;touch /etc/sddm/scripts/Xsetup
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;chmod a+x /etc/sddm/scripts/Xsetup
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;sudo nano /etc/sddm/scripts/Xsetup
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Bu dosyanın en altına inip bunu yazın&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;setxkbmap tr
 &lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;sddm-başlatma&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#sddm-ba%c5%9flatma&#34;&gt;
         #
     &lt;/a&gt;
-    SDDM Başlatma
+    SDDM başlatma
 &lt;/div&gt;
-&lt;/h2&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;sudo rc-update add xdm default
-&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;sudo /etc/init.d/xdm start
+&lt;/h2&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;sudo emerge --ask gui-libs/display-manager-init
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;sudo nano /etc/conf.d/display-manager
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Bu dosyayada bunu yazın.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;DISPLAYMANAGER=&amp;#34;sddm&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Sonra&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;sudo rc-update add display-manager default
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;sudo rc-service display-manager start
 &lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&#34;rehberin-sonu&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#rehberin-sonu&#34;&gt;

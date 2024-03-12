@@ -484,7 +484,7 @@ Type değerini değiştirmeye gerek yoktur.</p>
 <p>Böylece
 /dev/nvme0n1p1 EFI bölümü
 /dev/nvme0n1p2 SWAP bölümü
-/dev/nvme0n1p3 ROOt bölümü oldu.</p>
+/dev/nvme0n1p3 ROOT bölümü oldu.</p>
 <h2 id="6" >
 <div>
     <a href="#6">
@@ -860,15 +860,39 @@ Kendi kullanıcı adınızı yazın.</p>
 </div>
 </h2><pre tabindex="0"><code>sudo emerge --ask x11-misc/sddm
 </code></pre><pre tabindex="0"><code>sudo usermod -a -G video sddm
+</code></pre><h2 id="sddm-ayarlaması" >
+<div>
+    <a href="#sddm-ayarlamas%c4%b1">
+        #
+    </a>
+    SDDM ayarlaması
+</div>
+</h2><pre tabindex="0"><code>mkdir -p /etc/sddm.conf.d
+</code></pre><pre tabindex="0"><code>sudo /etc/sddm.conf.d/override.conf
+</code></pre><p>Bunu Dosyanın en altına ekleyin</p>
+<pre tabindex="0"><code>[X11]
+DisplayCommand=/etc/sddm/scripts/Xsetup
+</code></pre><p>Sonra</p>
+<pre tabindex="0"><code>mkdir -p /etc/sddm/scripts 
+</code></pre><pre tabindex="0"><code>touch /etc/sddm/scripts/Xsetup
+</code></pre><pre tabindex="0"><code>chmod a+x /etc/sddm/scripts/Xsetup
+</code></pre><pre tabindex="0"><code>sudo nano /etc/sddm/scripts/Xsetup
+</code></pre><p>Bu dosyanın en altına inip bunu yazın</p>
+<pre tabindex="0"><code>setxkbmap tr
 </code></pre><h2 id="sddm-başlatma" >
 <div>
     <a href="#sddm-ba%c5%9flatma">
         #
     </a>
-    SDDM Başlatma
+    SDDM başlatma
 </div>
-</h2><pre tabindex="0"><code>sudo rc-update add xdm default
-</code></pre><pre tabindex="0"><code>sudo /etc/init.d/xdm start
+</h2><pre tabindex="0"><code>sudo emerge --ask gui-libs/display-manager-init
+</code></pre><pre tabindex="0"><code>sudo nano /etc/conf.d/display-manager
+</code></pre><p>Bu dosyayada bunu yazın.</p>
+<pre tabindex="0"><code>DISPLAYMANAGER=&#34;sddm&#34;
+</code></pre><p>Sonra</p>
+<pre tabindex="0"><code>sudo rc-update add display-manager default
+</code></pre><pre tabindex="0"><code>sudo rc-service display-manager start
 </code></pre><h1 id="rehberin-sonu" >
 <div>
     <a href="#rehberin-sonu">

@@ -69,7 +69,7 @@ Type değerini değiştirmeye gerek yoktur.
 Böylece
 /dev/nvme0n1p1 EFI bölümü
 /dev/nvme0n1p2 SWAP bölümü
-/dev/nvme0n1p3 ROOt bölümü oldu.
+/dev/nvme0n1p3 ROOT bölümü oldu.
 
 ## 6 
 Root bölümünü ext4 ile biçimlendireceğiz.
@@ -471,14 +471,66 @@ sudo emerge --ask x11-misc/sddm
 ```
 sudo usermod -a -G video sddm
 ```
-## SDDM Başlatma
+## SDDM ayarlaması
 ```
-sudo rc-update add xdm default
+mkdir -p /etc/sddm.conf.d
 ```
 ```
-sudo /etc/init.d/xdm start
+sudo /etc/sddm.conf.d/override.conf
+```
+Bunu Dosyanın en altına ekleyin
+
+```
+[X11]
+DisplayCommand=/etc/sddm/scripts/Xsetup
+
 ```
 
+Sonra
+
+
+```
+mkdir -p /etc/sddm/scripts 
+```
+```
+touch /etc/sddm/scripts/Xsetup
+```
+```
+chmod a+x /etc/sddm/scripts/Xsetup
+```
+
+```
+sudo nano /etc/sddm/scripts/Xsetup
+```
+
+
+Bu dosyanın en altına inip bunu yazın
+```
+setxkbmap tr
+```
+
+## SDDM başlatma
+```
+sudo emerge --ask gui-libs/display-manager-init
+```
+
+```
+sudo nano /etc/conf.d/display-manager
+```
+Bu dosyayada bunu yazın.
+```
+DISPLAYMANAGER="sddm"
+```
+
+
+Sonra
+
+```
+sudo rc-update add display-manager default
+```
+```
+sudo rc-service display-manager start
+```
 # Rehberin Sonu
 
 Eğer buraya kadar geldiyseniz TEBRİKLER artık Gentoo Linux kullanıyorsunuz. Geri kalanı wikiden bakarsınız veya bana sorabilirsiniz.
