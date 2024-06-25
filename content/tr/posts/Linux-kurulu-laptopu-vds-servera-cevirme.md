@@ -5,6 +5,7 @@ draft = false
 +++
 
 ## Rehber: Linux Kurulu Laptopu VDS Server'a Çevirme
+
 {{% notice note %}}
 Bu işlemleri sanal makinede yapmanızı öneririm
 {{% /notice %}}
