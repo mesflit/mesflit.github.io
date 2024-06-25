@@ -23,7 +23,7 @@ params:
   ShowToc: true
   
   
-theme: ["hugo-notice", "PaperMod"]
+theme: ["PaperMod"]
 
 
 defaultContentLanguage: "tr"
