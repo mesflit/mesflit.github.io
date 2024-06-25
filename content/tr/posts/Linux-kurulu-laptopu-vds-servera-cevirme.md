@@ -75,22 +75,30 @@ No-IP Hesabı Oluşturma
 #### Hostname (Alt Alan Adı) Oluşturma
 
 - Hesabınıza giriş yapın.
+
 - "Dynamic DNS" veya "Manage Hosts" sekmesine gidin.
+
 - "Create Hostname" veya "Add a Host" seçeneğini tıklayın.
+
 - Oluşturmak istediğiniz alt alan adını (hostname) girin (örneğin, mylaptop.ddns.net).
+
 - Laptobunuzun mevcut IP adresini girin (bu genellikle otomatik olarak algılanır).
+
 - Kaydedin.
 
 #### No-IP Client (DUC) Kurulumu ve Yapılandırması
 
 Laptobunuzun IP adresi dinamik ise, IP adresinizi No-IP sunucularına düzenli olarak güncelleyecek bir yazılım kurmanız gerekecek.
 #### Linux için No-IP Client Kurulumu
-- No-IP DUC (Dynamic Update Client) yazılımını indirin ve kurun:
+No-IP DUC (Dynamic Update Client) yazılımını indirin ve kurun:
+   
     wget --content-disposition https://www.noip.com/download/linux/latest
     tar xf noip-duc_*.tar.gz
     cd /home/$USER/noip-duc_*/binaries && sudo apt install ./noip-duc_*_amd64.deb
     noip-duc -g all.ddnskey.com --username <DDNS Key Username> --password <DDNS Key Password>
-- Hizmeti etkinleştirin ve başlatın
+
+Hizmeti etkinleştirin ve başlatın
+    
     sudo systemctl enable noip2
     sudo systemctl start noip2
 
