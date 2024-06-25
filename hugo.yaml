@@ -6,7 +6,6 @@ enableEmoji: true
 pygmentsUseClasses: true
 enableRobotsTXT: true
 buildDrafts: false
-enableInlineShortcodes: true
 
 params:
   description: "Mesflit's Blog"
