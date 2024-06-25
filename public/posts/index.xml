@@ -13,8 +13,8 @@
       <link>http://localhost:1313/posts/linux-kurulu-laptopu-vds-servera-cevirme/</link>
       <pubDate>Tue, 25 Jun 2024 14:23:30 +0300</pubDate>
       <guid>http://localhost:1313/posts/linux-kurulu-laptopu-vds-servera-cevirme/</guid>
-      <description>Rehber: Linux Kurulu Laptopu VDS Server&amp;rsquo;a Çevirme &amp;lt;p class=&amp;quot;notice-title&amp;quot;&amp;gt; &amp;lt;span class=&amp;quot;icon-notice baseline&amp;quot;&amp;gt; &amp;lt;svg xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; viewBox=&amp;quot;0 128 300 300&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;Not&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;Bu işlemleri sanal makinede yapmanızı öneririm&amp;lt;/p&amp;gt;&amp;lt;/div&amp;gt; 1. Sistem Gereksinimleri Laptobunuzu bir VDS olarak kullanmadan önce, bazı sistem gereksinimlerini karşıladığınızdan emin olun:
-En az 4 GB RAM (daha fazla önerilir) Yeterli disk alanı (minimum 20 GB) Güçlü ve sabit bir internet bağlantısı 2. Linux Dağıtımının Yüklenmesi Eğer halihazırda bir Linux dağıtımı kullanmıyorsanız, popüler bir dağıtım olan Ubuntu Server&amp;rsquo;ı yüklemenizi tavsiye ederim.</description>
+      <description>Rehber: Linux Kurulu Laptopu VDS Server&amp;rsquo;a Çevirme Bu işlemleri sanal makinede yapmanızı öneririm 1. Sistem Gereksinimleri Laptobunuzu bir VDS olarak kullanmadan önce, bazı sistem gereksinimlerini karşıladığınızdan emin olun:
+En az 4 GB RAM (daha fazla önerilir) Yeterli disk alanı (minimum 20 GB) Güçlü ve sabit bir internet bağlantısı 2. Linux Dağıtımının Yüklenmesi Eğer halihazırda bir Linux dağıtımı kullanmıyorsanız, popüler bir dağıtım olan Ubuntu Server&amp;rsquo;ı yüklemenizi tavsiye ederim. Ubuntu Server, VDS olarak kullanıma uygundur.</description>
     </item>
   </channel>
 </rss>

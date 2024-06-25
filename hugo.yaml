@@ -21,7 +21,11 @@ params:
   ShowAllPagesInArchive: true
   ShowPageNums: true
   ShowToc: true
-  
+  socialIcons:
+    - name: github
+      url: "https://github.com/mesflit/"
+    - name: youtube
+      url: "https://www.youtube.com/@mesflit"
   
 theme: [PaperMod]
 
@@ -35,6 +39,11 @@ languages:
     contentDir: "content/en"
     params:
       description: "Mesflit's Blog"
+      homeInfoParams:
+       Title: "Mesflit's blog"
+       Content: >
+         Welcome to my blog.
+         - Here, I will teach you everything I know about Linux, Android, and technology.
     taxonomies:
       category: categories
       tag: tags
@@ -52,6 +61,11 @@ languages:
     contentDir: "content/tr"
     params:
       description: "Mesflit'in Blogu"
+      homeInfoParams:
+       Title: "Mesflit'in Bloğu"
+       Content: >
+         Merhaba bloğuma hoş geldiniz.
+         - Burada size Linux, Android ve teknoloji hakkında bildiğim her şeyi öğreteceğim.
     taxonomies:
       category: kategoriler
       tag: etiketler
@@ -61,3 +75,4 @@ languages:
         - name: Github
           url: https://github.com/mesflit/
           weight: 10
+    
