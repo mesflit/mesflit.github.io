@@ -5,6 +5,10 @@ draft = false
 +++
 
 ## Rehber: Linux Kurulu Laptopu VDS Server'a Çevirme
+{{% notice note %}}
+Bu işlemleri sanal makinede yapmanızı öneririm
+{{% /notice %}}
+
 ### 1. Sistem Gereksinimleri
 Laptobunuzu bir VDS olarak kullanmadan önce, bazı sistem gereksinimlerini karşıladığınızdan emin olun:
 - En az 4 GB RAM (daha fazla önerilir)
