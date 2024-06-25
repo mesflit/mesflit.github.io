@@ -13,7 +13,9 @@
       <link>http://localhost:1313/posts/linux-kurulu-laptopu-vds-servera-cevirme/</link>
       <pubDate>Tue, 25 Jun 2024 14:23:30 +0300</pubDate>
       <guid>http://localhost:1313/posts/linux-kurulu-laptopu-vds-servera-cevirme/</guid>
-      <description>Rehber: Linux Kurulu Laptopu VDS Server&amp;rsquo;a Çevirme </description>
+      <description>Rehber: Linux Kurulu Laptopu VDS Server&amp;rsquo;a Çevirme 1. Sistem Gereksinimleri Laptobunuzu bir VDS olarak kullanmadan önce, bazı sistem gereksinimlerini karşıladığınızdan emin olun:
+En az 4 GB RAM (daha fazla önerilir) Yeterli disk alanı (minimum 20 GB) Güçlü ve sabit bir internet bağlantısı 2. Linux Dağıtımının Yüklenmesi Eğer halihazırda bir Linux dağıtımı kullanmıyorsanız, popüler bir dağıtım olan Ubuntu Server&amp;rsquo;ı yüklemenizi tavsiye ederim. Ubuntu Server, VDS olarak kullanıma uygundur.
+3. Web Sunucusu Kurulumu Laptobunuzu web sunucusu olarak kullanmak için Apache veya Nginx gibi bir web sunucusu yazılımı kurabilirsiniz.</description>
     </item>
   </channel>
 </rss>

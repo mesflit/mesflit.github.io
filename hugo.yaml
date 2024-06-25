@@ -1,6 +1,11 @@
-baseURL: "https://example.com/"
+baseURL: "https://mesflit.github.io/"
 languageCode: "en-us"
 title: "Mesflit"
+paginate: 8
+enableEmoji: true
+pygmentsUseClasses: true
+enableRobotsTXT: true
+buildDrafts: false
 
 params:
   description: "Mesflit's Blog"
@@ -8,8 +13,18 @@ params:
   ShowShareButton: true
   author: "Mesflit"
   defaultTheme: "auto"
+  ShowPostNavLinks: true
+  ShowBreadCrumbs: true
+  ShowCodeCopyButtons: true
+  ShowRssButtonInSectionTermList: true
+  ShowAllPagesInArchive: true
+  ShowPageNums: true
+  ShowToc: true
+  
+  
 theme:
   - "PaperMod"
+
 
 defaultContentLanguage: "tr"
 languages:
@@ -19,11 +34,30 @@ languages:
     weight: 1
     contentDir: "content/en"
     params:
-      description: "Mesflit's Blog - Innovative technology content and up-to-date information on software development topics"
+      description: "Mesflit's Blog"
+    taxonomies:
+      category: categories
+      tag: tags
+      series: series
+    menu:
+      main:
+        - name: Github
+          url: https://github.com/mesflit/
+          weight: 10
+
   tr:
     languageName: "Türkçe"
     title: "Mesflit - Türkçe"
     weight: 2
     contentDir: "content/tr"
     params:
-      description: "Mesflit'in Blogu - Yenilikçi teknoloji içerikleri ve yazılım geliştirme konularında güncel bilgiler"
+      description: "Mesflit'in Blogu"
+    taxonomies:
+      category: kategoriler
+      tag: etiketler
+      series: seriler
+    menu:
+      main:
+        - name: Github
+          url: https://github.com/mesflit/
+          weight: 10

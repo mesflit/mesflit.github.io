@@ -21,28 +21,10 @@
     <loc>http://localhost:1313/posts/</loc>
     <lastmod>2024-06-25T14:23:30+03:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/en/categories/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="tr"
-                href="http://localhost:1313/categories/"
-                />
+    <loc>http://localhost:1313/etiketler/</loc>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/en/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="tr"
-                href="http://localhost:1313/tags/"
-                />
+    <loc>http://localhost:1313/kategoriler/</loc>
+  </url><url>
+    <loc>http://localhost:1313/seriler/</loc>
   </url>
 </urlset>

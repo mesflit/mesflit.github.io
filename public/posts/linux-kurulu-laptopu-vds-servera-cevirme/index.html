@@ -106,6 +106,17 @@ En az 4 GB RAM (daha fazla önerilir) Yeterli disk alanı (minimum 20 GB) Güçl
             </div>
         </div>
         <ul id="menu">
+            <li>
+                <a href="https://github.com/mesflit/" title="Github">
+                    <span>Github</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
         </ul>
     </nav>
 </header>
@@ -113,14 +124,85 @@ En az 4 GB RAM (daha fazla önerilir) Yeterli disk alanı (minimum 20 GB) Güçl
 
 <article class="post-single">
   <header class="post-header">
-    
+    <div class="breadcrumbs"><a href="http://localhost:1313/">Anasayfa</a>&nbsp;»&nbsp;<a href="http://localhost:1313/posts/">Posts</a></div>
     <h1 class="post-title entry-hint-parent">
       Linux Kurulu Laptopu VDS Server&#39;a Çevirme
     </h1>
     <div class="post-meta"><span title='2024-06-25 14:23:30 +0300 +03'>Haziran 25, 2024</span>&nbsp;·&nbsp;3 dk&nbsp;·&nbsp;Mesflit
 
 </div>
-  </header> 
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">İçindekiler</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#rehber-linux-kurulu-laptopu-vds-servera-%c3%a7evirme" aria-label="Rehber: Linux Kurulu Laptopu VDS Server&rsquo;a Çevirme">Rehber: Linux Kurulu Laptopu VDS Server&rsquo;a Çevirme</a><ul>
+                        
+                <li>
+                    <a href="#1-sistem-gereksinimleri" aria-label="1. Sistem Gereksinimleri">1. Sistem Gereksinimleri</a></li>
+                <li>
+                    <a href="#2-linux-da%c4%9f%c4%b1t%c4%b1m%c4%b1n%c4%b1n-y%c3%bcklenmesi" aria-label="2. Linux Dağıtımının Yüklenmesi">2. Linux Dağıtımının Yüklenmesi</a></li>
+                <li>
+                    <a href="#3-web-sunucusu-kurulumu" aria-label="3. Web Sunucusu Kurulumu">3. Web Sunucusu Kurulumu</a><ul>
+                        
+                <li>
+                    <a href="#apache-web-sunucusu-kurulumu" aria-label="Apache Web Sunucusu Kurulumu">Apache Web Sunucusu Kurulumu</a></li>
+                <li>
+                    <a href="#nginx-web-sunucusu-kurulumu" aria-label="Nginx Web Sunucusu Kurulumu">Nginx Web Sunucusu Kurulumu</a></li></ul>
+                </li>
+                <li>
+                    <a href="#4-veritaban%c4%b1-sunucusu-kurulumu" aria-label="4. Veritabanı Sunucusu Kurulumu">4. Veritabanı Sunucusu Kurulumu</a><ul>
+                        
+                <li>
+                    <a href="#mysql-kurulumu" aria-label="MySQL Kurulumu">MySQL Kurulumu</a></li>
+                <li>
+                    <a href="#postgresql-kurulumu" aria-label="PostgreSQL Kurulumu">PostgreSQL Kurulumu</a></li></ul>
+                </li>
+                <li>
+                    <a href="#5-ftp-sunucusu-kurulumu" aria-label="5. FTP Sunucusu Kurulumu">5. FTP Sunucusu Kurulumu</a><ul>
+                        
+                <li>
+                    <a href="#vsftpd-kurulumu" aria-label="vsftpd Kurulumu">vsftpd Kurulumu</a></li></ul>
+                </li>
+                <li>
+                    <a href="#6-g%c3%bcvenlik-ayarlar%c4%b1" aria-label="6. Güvenlik Ayarları">6. Güvenlik Ayarları</a><ul>
+                        
+                <li>
+                    <a href="#ufw-g%c3%bcvenlik-duvar%c4%b1-kurulumu-ve-yap%c4%b1land%c4%b1rmas%c4%b1" aria-label="UFW Güvenlik Duvarı Kurulumu ve Yapılandırması">UFW Güvenlik Duvarı Kurulumu ve Yapılandırması</a></li></ul>
+                </li>
+                <li>
+                    <a href="#7-dinamik-dns-ddns-hizmeti-kullanarak-ip-adresini-domain-ile-e%c5%9fle%c5%9ftirme" aria-label="7. Dinamik DNS (DDNS) Hizmeti Kullanarak IP Adresini Domain ile Eşleştirme">7. Dinamik DNS (DDNS) Hizmeti Kullanarak IP Adresini Domain ile Eşleştirme</a><ul>
+                        
+                <li>
+                    <a href="#hostname-alt-alan-ad%c4%b1-olu%c5%9fturma" aria-label="Hostname (Alt Alan Adı) Oluşturma">Hostname (Alt Alan Adı) Oluşturma</a></li>
+                <li>
+                    <a href="#no-ip-client-duc-kurulumu-ve-yap%c4%b1land%c4%b1rmas%c4%b1" aria-label="No-IP Client (DUC) Kurulumu ve Yapılandırması">No-IP Client (DUC) Kurulumu ve Yapılandırması</a></li>
+                <li>
+                    <a href="#linux-i%c3%a7in-no-ip-client-kurulumu" aria-label="Linux için No-IP Client Kurulumu">Linux için No-IP Client Kurulumu</a></li></ul>
+                </li>
+                <li>
+                    <a href="#9-izleme-ve-bak%c4%b1m" aria-label="9. İzleme ve Bakım">9. İzleme ve Bakım</a><ul>
+                        
+                <li>
+                    <a href="#htop-kurulumu" aria-label="htop Kurulumu">htop Kurulumu</a></li>
+                <li>
+                    <a href="#vnstat-kurulumu" aria-label="vnstat Kurulumu">vnstat Kurulumu</a></li></ul>
+                </li>
+                <li>
+                    <a href="#sonu%c3%a7" aria-label="Sonuç">Sonuç</a></li>
+                <li>
+                    <a href="#mesflit-sunar" aria-label="Mesflit Sunar">Mesflit Sunar</a>
+                </li>
+            </ul>
+            </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
   <div class="post-content"><h2 id="rehber-linux-kurulu-laptopu-vds-servera-çevirme">Rehber: Linux Kurulu Laptopu VDS Server&rsquo;a Çevirme<a hidden class="anchor" aria-hidden="true" href="#rehber-linux-kurulu-laptopu-vds-servera-çevirme">#</a></h2>
 <h3 id="1-sistem-gereksinimleri">1. Sistem Gereksinimleri<a hidden class="anchor" aria-hidden="true" href="#1-sistem-gereksinimleri">#</a></h3>
 <p>Laptobunuzu bir VDS olarak kullanmadan önce, bazı sistem gereksinimlerini karşıladığınızdan emin olun:</p>
@@ -236,6 +318,7 @@ vnstat
   <footer class="post-footer">
     <ul class="post-tags">
     </ul>
+
   </footer>
 </article>
     </main>
@@ -308,6 +391,53 @@ vnstat
         }
     })
 
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'Kopyala';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'Kopyalandı!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'Kopyala';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
 </script>
 </body>
 
