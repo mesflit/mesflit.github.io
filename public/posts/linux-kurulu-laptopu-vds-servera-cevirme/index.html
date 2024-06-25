@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="tr" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Linux Kurulu Laptopu VDS Server&#39;a Çevirme | Mesflit - Türkçe</title>
+<meta name="keywords" content="">
+<meta name="description" content="Rehber: Linux Kurulu Laptopu VDS Server&rsquo;a Çevirme 1. Sistem Gereksinimleri Laptobunuzu bir VDS olarak kullanmadan önce, bazı sistem gereksinimlerini karşıladığınızdan emin olun:
+En az 4 GB RAM (daha fazla önerilir) Yeterli disk alanı (minimum 20 GB) Güçlü ve sabit bir internet bağlantısı 2. Linux Dağıtımının Yüklenmesi Eğer halihazırda bir Linux dağıtımı kullanmıyorsanız, popüler bir dağıtım olan Ubuntu Server&rsquo;ı yüklemenizi tavsiye ederim. Ubuntu Server, VDS olarak kullanıma uygundur.
+3. Web Sunucusu Kurulumu Laptobunuzu web sunucusu olarak kullanmak için Apache veya Nginx gibi bir web sunucusu yazılımı kurabilirsiniz.">
+<meta name="author" content="Mesflit">
+<link rel="canonical" href="http://localhost:1313/posts/linux-kurulu-laptopu-vds-servera-cevirme/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="tr" href="http://localhost:1313/posts/linux-kurulu-laptopu-vds-servera-cevirme/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="Mesflit - Türkçe (Alt + H)">Mesflit - Türkçe</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                <ul class="lang-switch"><li>|</li>
+                    <li>
+                        <a href="http://localhost:1313/en/" title="English"
+                            aria-label="English">En</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Linux Kurulu Laptopu VDS Server&#39;a Çevirme
+    </h1>
+    <div class="post-meta"><span title='2024-06-25 14:23:30 +0300 +03'>Haziran 25, 2024</span>&nbsp;·&nbsp;3 dk&nbsp;·&nbsp;Mesflit
+
+</div>
+  </header> 
+  <div class="post-content"><h2 id="rehber-linux-kurulu-laptopu-vds-servera-çevirme">Rehber: Linux Kurulu Laptopu VDS Server&rsquo;a Çevirme<a hidden class="anchor" aria-hidden="true" href="#rehber-linux-kurulu-laptopu-vds-servera-çevirme">#</a></h2>
+<h3 id="1-sistem-gereksinimleri">1. Sistem Gereksinimleri<a hidden class="anchor" aria-hidden="true" href="#1-sistem-gereksinimleri">#</a></h3>
+<p>Laptobunuzu bir VDS olarak kullanmadan önce, bazı sistem gereksinimlerini karşıladığınızdan emin olun:</p>
+<ul>
+<li>En az 4 GB RAM (daha fazla önerilir)</li>
+<li>Yeterli disk alanı (minimum 20 GB)</li>
+<li>Güçlü ve sabit bir internet bağlantısı</li>
+</ul>
+<h3 id="2-linux-dağıtımının-yüklenmesi">2. Linux Dağıtımının Yüklenmesi<a hidden class="anchor" aria-hidden="true" href="#2-linux-dağıtımının-yüklenmesi">#</a></h3>
+<p>Eğer halihazırda bir Linux dağıtımı kullanmıyorsanız, popüler bir dağıtım olan Ubuntu Server&rsquo;ı yüklemenizi tavsiye ederim. Ubuntu Server, VDS olarak kullanıma uygundur.</p>
+<h3 id="3-web-sunucusu-kurulumu">3. Web Sunucusu Kurulumu<a hidden class="anchor" aria-hidden="true" href="#3-web-sunucusu-kurulumu">#</a></h3>
+<p>Laptobunuzu web sunucusu olarak kullanmak için Apache veya Nginx gibi bir web sunucusu yazılımı kurabilirsiniz.</p>
+<h4 id="apache-web-sunucusu-kurulumu">Apache Web Sunucusu Kurulumu<a hidden class="anchor" aria-hidden="true" href="#apache-web-sunucusu-kurulumu">#</a></h4>
+<pre><code>sudo apt update
+sudo apt install apache2
+sudo systemctl enable apache2
+sudo systemctl start apache2
+</code></pre>
+<h4 id="nginx-web-sunucusu-kurulumu">Nginx Web Sunucusu Kurulumu<a hidden class="anchor" aria-hidden="true" href="#nginx-web-sunucusu-kurulumu">#</a></h4>
+<pre><code>sudo apt update
+sudo apt install nginx
+sudo systemctl enable nginx
+sudo systemctl start nginx
+</code></pre>
+<h3 id="4-veritabanı-sunucusu-kurulumu">4. Veritabanı Sunucusu Kurulumu<a hidden class="anchor" aria-hidden="true" href="#4-veritabanı-sunucusu-kurulumu">#</a></h3>
+<p>Web uygulamaları için bir veritabanı sunucusu kurabilirsiniz.</p>
+<h4 id="mysql-kurulumu">MySQL Kurulumu<a hidden class="anchor" aria-hidden="true" href="#mysql-kurulumu">#</a></h4>
+<pre><code>sudo apt update
+sudo apt install mysql-server
+sudo mysql_secure_installation
+</code></pre>
+<h4 id="postgresql-kurulumu">PostgreSQL Kurulumu<a hidden class="anchor" aria-hidden="true" href="#postgresql-kurulumu">#</a></h4>
+<pre><code>sudo apt update
+sudo apt install postgresql postgresql-contrib
+sudo systemctl enable postgresql
+sudo systemctl start postgresql
+</code></pre>
+<h3 id="5-ftp-sunucusu-kurulumu">5. FTP Sunucusu Kurulumu<a hidden class="anchor" aria-hidden="true" href="#5-ftp-sunucusu-kurulumu">#</a></h3>
+<p>Dosya transferi için bir FTP sunucusu kurabilirsiniz.</p>
+<h4 id="vsftpd-kurulumu">vsftpd Kurulumu<a hidden class="anchor" aria-hidden="true" href="#vsftpd-kurulumu">#</a></h4>
+<pre><code>sudo apt update
+sudo apt install vsftpd
+sudo systemctl enable vsftpd
+sudo systemctl start vsftpd
+</code></pre>
+<h3 id="6-güvenlik-ayarları">6. Güvenlik Ayarları<a hidden class="anchor" aria-hidden="true" href="#6-güvenlik-ayarları">#</a></h3>
+<p>Sunucunuzu güvenli hale getirmek için bazı temel güvenlik ayarlarını yapın:</p>
+<ul>
+<li>Güçlü şifreler kullanın.</li>
+<li>Gerekli olmayan servisleri kapatın.</li>
+<li>UFW (Uncomplicated Firewall) ile temel güvenlik duvarı kurallarını ayarlayın.</li>
+</ul>
+<h4 id="ufw-güvenlik-duvarı-kurulumu-ve-yapılandırması">UFW Güvenlik Duvarı Kurulumu ve Yapılandırması<a hidden class="anchor" aria-hidden="true" href="#ufw-güvenlik-duvarı-kurulumu-ve-yapılandırması">#</a></h4>
+<pre><code>sudo apt install ufw
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+sudo ufw allow 80/tcp    # HTTP için
+sudo ufw allow 443/tcp   # HTTPS için
+sudo ufw enable
+</code></pre>
+<h3 id="7-dinamik-dns-ddns-hizmeti-kullanarak-ip-adresini-domain-ile-eşleştirme">7. Dinamik DNS (DDNS) Hizmeti Kullanarak IP Adresini Domain ile Eşleştirme<a hidden class="anchor" aria-hidden="true" href="#7-dinamik-dns-ddns-hizmeti-kullanarak-ip-adresini-domain-ile-eşleştirme">#</a></h3>
+<p>No-IP Hesabı Oluşturma</p>
+<ul>
+<li>No-IP web sitesine (<a href="https://www.noip.com">https://www.noip.com</a>) gidin.</li>
+<li>&ldquo;Sign Up&rdquo; veya &ldquo;Create Account&rdquo; seçeneklerini tıklayın.</li>
+<li>Gerekli bilgileri doldurarak bir hesap oluşturun.</li>
+</ul>
+<h4 id="hostname-alt-alan-adı-oluşturma">Hostname (Alt Alan Adı) Oluşturma<a hidden class="anchor" aria-hidden="true" href="#hostname-alt-alan-adı-oluşturma">#</a></h4>
+<ul>
+<li>Hesabınıza giriş yapın.</li>
+<li>&ldquo;Dynamic DNS&rdquo; veya &ldquo;Manage Hosts&rdquo; sekmesine gidin.</li>
+<li>&ldquo;Create Hostname&rdquo; veya &ldquo;Add a Host&rdquo; seçeneğini tıklayın.</li>
+<li>Oluşturmak istediğiniz alt alan adını (hostname) girin (örneğin, mylaptop.ddns.net).</li>
+<li>Laptobunuzun mevcut IP adresini girin (bu genellikle otomatik olarak algılanır).</li>
+<li>Kaydedin.</li>
+</ul>
+<h4 id="no-ip-client-duc-kurulumu-ve-yapılandırması">No-IP Client (DUC) Kurulumu ve Yapılandırması<a hidden class="anchor" aria-hidden="true" href="#no-ip-client-duc-kurulumu-ve-yapılandırması">#</a></h4>
+<p>Laptobunuzun IP adresi dinamik ise, IP adresinizi No-IP sunucularına düzenli olarak güncelleyecek bir yazılım kurmanız gerekecek.</p>
+<h4 id="linux-için-no-ip-client-kurulumu">Linux için No-IP Client Kurulumu<a hidden class="anchor" aria-hidden="true" href="#linux-için-no-ip-client-kurulumu">#</a></h4>
+<ul>
+<li>No-IP DUC (Dynamic Update Client) yazılımını indirin ve kurun:
+wget &ndash;content-disposition <a href="https://www.noip.com/download/linux/latest">https://www.noip.com/download/linux/latest</a>
+tar xf noip-duc_<em>.tar.gz
+cd /home/$USER/noip-duc_</em>/binaries &amp;&amp; sudo apt install ./noip-duc_*_amd64.deb
+noip-duc -g all.ddnskey.com &ndash;username <!-- raw HTML omitted --> &ndash;password <!-- raw HTML omitted --></li>
+<li>Hizmeti etkinleştirin ve başlatın
+sudo systemctl enable noip2
+sudo systemctl start noip2</li>
+</ul>
+<h3 id="9-izleme-ve-bakım">9. İzleme ve Bakım<a hidden class="anchor" aria-hidden="true" href="#9-izleme-ve-bakım">#</a></h3>
+<p>Sunucunuzu izlemek ve performansını artırmak için bazı araçlar kullanabilirsiniz:</p>
+<ul>
+<li>htop veya top ile sistem kaynaklarını izleyin.</li>
+<li>vnstat ile ağ trafiğini izleyin.</li>
+</ul>
+<h4 id="htop-kurulumu">htop Kurulumu<a hidden class="anchor" aria-hidden="true" href="#htop-kurulumu">#</a></h4>
+<pre><code>sudo apt install htop
+htop
+</code></pre>
+<h4 id="vnstat-kurulumu">vnstat Kurulumu<a hidden class="anchor" aria-hidden="true" href="#vnstat-kurulumu">#</a></h4>
+<pre><code>sudo apt install vnstat
+sudo systemctl enable vnstat
+sudo systemctl start vnstat
+vnstat
+</code></pre>
+<h3 id="sonuç">Sonuç<a hidden class="anchor" aria-hidden="true" href="#sonuç">#</a></h3>
+<p>Bu rehber, bir Linux laptobunu VDS olarak kullanmanın temel adımlarını ve gereksinimlerini kapsar. Kendi laptobunuzdan çalışırken SSH&rsquo;a ihtiyaç duymayabilirsiniz, ancak ileride uzaktan erişim ihtiyacı doğarsa SSH kurulumunu da göz önünde bulundurabilirsiniz. Daha ileri seviye konfigürasyonlar ve özel ihtiyaçlar için, her bir hizmetin dökümantasyonunu ve Linux yönetimi konusundaki diğer kaynakları incelemenizi öneririm.</p>
+<h3 id="mesflit-sunar">Mesflit Sunar<a hidden class="anchor" aria-hidden="true" href="#mesflit-sunar">#</a></h3>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2024 <a href="http://localhost:1313/">Mesflit - Türkçe</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+baseURL: "https://example.com/"
+languageCode: "en-us"
+title: "Mesflit"
+
+params:
+  description: "Mesflit's Blog"
+  ShowReadingTime: true
+  ShowShareButton: true
+  author: "Mesflit"
+  defaultTheme: "auto"
+theme:
+  - "PaperMod"
+
+defaultContentLanguage: "tr"
+languages:
+  en:
+    languageName: "English"
+    title: "Mesflit - English"
+    weight: 1
+    contentDir: "content/en"
+    params:
+      description: "Mesflit's Blog - Innovative technology content and up-to-date information on software development topics"
+  tr:
+    languageName: "Türkçe"
+    title: "Mesflit - Türkçe"
+    weight: 2
+    contentDir: "content/tr"
+    params:
+      description: "Mesflit'in Blogu - Yenilikçi teknoloji içerikleri ve yazılım geliştirme konularında güncel bilgiler"
