@@ -23,7 +23,7 @@ params:
   ShowToc: true
   
   
-theme: ["PaperMod"]
+theme: [PaperMod]
 
 
 defaultContentLanguage: "tr"
