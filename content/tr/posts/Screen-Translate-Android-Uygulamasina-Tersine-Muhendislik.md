@@ -98,7 +98,7 @@ Ve artık yeni ve imzalanmış APK dosyamız var. İsmi `signed-app.apk` artık 
 
 ## Linkler
 
-### Screen Trnaslate Play Store
+### Screen Translate Play Store
 [Play Store](https://play.google.com/store/apps/details?id=com.recognize_text.translate.screen)
 
 ### Screen Translate 1.143 Orjinal APK 
