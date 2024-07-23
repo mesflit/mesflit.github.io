@@ -120,6 +120,15 @@
     </nav>
 </header>
 <main class="main"> 
+
+<link href="/pagefind/pagefind-ui.css" rel="stylesheet">
+<script src="/pagefind/pagefind-ui.js"></script>
+<div id="search"></div>
+<script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+        new PagefindUI({ element: "#search", showSubResults: true });
+    });
+</script>
 <header class="page-header"><div class="breadcrumbs"><a href="http://localhost:1313/">Anasayfa</a></div>
   <h1>
     Posts

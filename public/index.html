@@ -122,6 +122,15 @@
     </nav>
 </header>
 <main class="main"> 
+
+<link href="/pagefind/pagefind-ui.css" rel="stylesheet">
+<script src="/pagefind/pagefind-ui.js"></script>
+<div id="search"></div>
+<script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+        new PagefindUI({ element: "#search", showSubResults: true });
+    });
+</script>
 <article class="first-entry home-info">
     <header class="entry-header">
         <h1>Mesflit&rsquo;in Bloğu</h1>
