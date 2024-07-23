@@ -25,7 +25,7 @@ Bu konuda size bir Android uygulaması olan Screen Translate'i tersine mühendis
 ## Screen Translate'i İndirme
 
 Kullanacağımız Screen Translate sürümü `1.143`
-[Play Store](https://play.google.com/store/apps/details?id=com.recognize_text.translate.screen)'dan veya [burdaki](#Linkler) linkten APK olarak indirebilirsiniz.
+[Play Store](https://play.google.com/store/apps/details?id=com.recognize_text.translate.screen)'dan veya [burdaki](#linkler) linkten APK olarak indirebilirsiniz.
 
 ## Dosyayı Apk'ya Çevirme
 
