@@ -2,11 +2,8 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/posts/linux-kurulu-laptopu-vds-servera-cevirme/</loc>
-    <lastmod>2024-06-25T14:23:30+03:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/</loc>
-    <lastmod>2024-06-25T14:23:30+03:00</lastmod>
+    <lastmod>2024-07-22T10:40:39+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -19,6 +16,15 @@
                 />
   </url><url>
     <loc>http://localhost:1313/posts/</loc>
+    <lastmod>2024-07-22T10:40:39+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/screen-translate-android-uygulamasina-tersine-muhendislik/</loc>
+    <lastmod>2024-07-22T10:40:39+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/linux-pil-dayanma-s%C3%BCresini-artt%C4%B1rma/</loc>
+    <lastmod>2024-06-26T11:28:15+03:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/linux-kurulu-laptopu-vds-servera-cevirme/</loc>
     <lastmod>2024-06-25T14:23:30+03:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/etiketler/</loc>
