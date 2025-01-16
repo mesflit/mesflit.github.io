@@ -1,4 +1,3 @@
-/* Genel ayarlar */
 * {
     margin: 0;
     padding: 0;
@@ -6,173 +5,95 @@
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #121212; /* Karanlık arka plan */
-    color: #e0e0e0; /* Açık metin rengi */
+    font-family: 'Arial', sans-serif;
+    background-color: #121212;
+    color: #fff;
     line-height: 1.6;
-    overflow-x: hidden;
-}
-
-/* Bağlantılar */
-a {
-    color: #bb86fc; 
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-a:hover {
-    color: #03dac5; 
-}
-
-/* Ana header */
-header {
-    background-color: #3700b3; 
-    color: white;
-    padding: 40px 20px;
-    text-align: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    border-radius: 15px;
-    backdrop-filter: blur(10px); /* Blur efekti */
-}
-
-header h1 {
-    font-size: 3rem;
-    font-weight: 500;
-    margin-bottom: 10px;
-}
-
-header p {
-    font-size: 1.2rem;
-}
-
-/* Ana içerik */
-main {
-    padding: 40px;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
+    min-height: 100vh;
+    flex-direction: column;
 }
 
-/* Sayfalar listesi */
-ul {
-    list-style-type: none;
-    padding: 0;
-    margin-top: 40px;
-    width: 100%;
-    max-width: 1000px;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-}
-
-ul li {
-    background-color: #1f1f1f;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-    backdrop-filter: blur(5px); /* Blur efekti */
-}
-
-ul li:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-
-ul li a {
-    font-size: 1.5rem;
-    font-weight: 500;
-    color: #bb86fc;
-    display: block;
-    transition: color 0.3s;
-}
-
-ul li a:hover {
-    color: #03dac5;
-}
-
-/* Footer */
-footer {
+header {
     text-align: center;
-    background-color: #3700b3; 
-    color: white;
-    padding: 20px;
-    margin-top: 40px;
-    border-radius: 15px;
-    backdrop-filter: blur(10px); /* Blur efekti */
-}
-
-footer p {
-    font-size: 1rem;
-}
-
-/* Sayfa içerik */
-.page-content {
-    background-color: #1f1f1f;
-    padding: 20px;
-    border-radius: 15px;
-    margin-top: 40px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5px); /* Blur efekti */
-}
-
-.page-content h2 {
-    color: #03dac5; 
-    font-size: 2rem;
-    font-weight: 600;
     margin-bottom: 20px;
 }
 
-.page-content p {
-    color: #e0e0e0;
-    font-size: 1.2rem;
+h1 {
+    font-size: 2.5rem;
+    color: #9C27B0;
+    margin-bottom: 10px;
 }
 
-/* Responsive Tasarım */
+p {
+    font-size: 1rem;
+    color: #E0E0E0;
+}
+
+main {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #1F1F1F;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    background-color: #333;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+ul li a {
+    display: block;
+    padding: 15px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+ul li a:hover {
+    background-color: #9C27B0;
+}
+
+footer {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #E0E0E0;
+}
+
+footer a {
+    color: #9C27B0;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
 @media (max-width: 768px) {
-    header h1 {
-        font-size: 2.5rem;
-    }
-
-    header p {
-        font-size: 1rem;
-    }
-
-    ul li {
-        padding: 15px;
-    }
-
-    footer p {
-        font-size: 0.9rem;
-    }
-
-    .page-content h2 {
-        font-size: 1.8rem;
-    }
-
-    .page-content p {
-        font-size: 1rem;
-    }
-}
-
-@media (max-width: 480px) {
-    header h1 {
+    h1 {
         font-size: 2rem;
     }
 
+    p {
+        font-size: 0.9rem;
+    }
+
     ul li a {
-        font-size: 1.2rem;
-    }
-
-    footer p {
-        font-size: 0.8rem;
-    }
-
-    .page-content h2 {
-        font-size: 1.6rem;
-    }
-
-    .page-content p {
         font-size: 1rem;
     }
 }
