@@ -1,0 +1,40 @@
+name: Build Mesflit Blog
+
+on:
+  push:
+    branches:
+      - main  # Ana branşa push yapıldığında tetiklenecek
+  pull_request:
+    branches:
+      - main  # Ana branşta pull request oluşturulduğunda tetiklenecek
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # Ubuntu üzerinde çalışacak
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2  # Reponun içeriğini çeker
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.12'  # Python 3.9 kullanılıyor
+
+      - name: Install Dependencies
+        run: |
+          pip install markdown  # Markdown modülünü yükle
+
+      - name: Generate Blog Pages
+        run: |
+          python generator.py  # Python scriptini çalıştırarak HTML dosyalarını oluştur
+
+      - name: Commit & Push Changes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # GITHUB_TOKEN kullanılıyor
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git add -A
+          git commit -m "Update blog pages"
+          git push
