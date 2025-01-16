@@ -7,7 +7,7 @@ PAGES_LIST = "pages.list"
 PAGES_DIR = "pages"
 OUTPUT_DIR = "pages-html"
 STYLE_PATH = "style.css"
-INDEX_OUTPUT = "index.html"  # Ana dizine kaydedilecek index.html
+INDEX_OUTPUT = os.path.join(OUTPUT_DIR, "index.html")
 
 # HTML şablonları
 PAGE_TEMPLATE = """
@@ -106,9 +106,9 @@ def build_site():
             f.write(page_html)
 
         # Ana sayfa için bağlantı ekle
-        links.append(f'<li><a href="{os.path.basename(output_file)}">{title}</a></li>')
+        links.append(f'<li><a href="pages-html/{os.path.splitext(md_file)[0]}.html">{title}</a></li>')
 
-    # index.html'i ana dizine kaydet
+    # index.html oluştur
     index_html = generate_index(links)
     with open(INDEX_OUTPUT, "w", encoding="utf-8") as f:
         f.write(index_html)
