@@ -7,7 +7,7 @@ PAGES_LIST = "pages.list"
 PAGES_DIR = "pages"
 OUTPUT_DIR = "pages-html"
 STYLE_PATH = "style.css"
-INDEX_OUTPUT = os.path.join(OUTPUT_DIR, "index.html")
+INDEX_OUTPUT = "index.html"  # index.html, ana dizine oluşturulacak
 
 # HTML şablonları
 PAGE_TEMPLATE = """
