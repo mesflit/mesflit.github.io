@@ -13,23 +13,26 @@ body {
     overflow-x: hidden;
 }
 
+/* Bağlantılar */
 a {
-    color: #bb86fc;
+    color: #bb86fc; 
     text-decoration: none;
     transition: color 0.3s;
 }
 
 a:hover {
-    color: #03dac5;
+    color: #03dac5; 
 }
 
 /* Ana header */
 header {
-    background-color: #3700b3; /* Mor arka plan */
+    background-color: #3700b3; 
     color: white;
     padding: 40px 20px;
     text-align: center;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    backdrop-filter: blur(10px); /* Blur efekti */
 }
 
 header h1 {
@@ -65,9 +68,10 @@ ul {
 ul li {
     background-color: #1f1f1f;
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 15px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s, box-shadow 0.3s;
+    backdrop-filter: blur(5px); /* Blur efekti */
 }
 
 ul li:hover {
@@ -90,10 +94,12 @@ ul li a:hover {
 /* Footer */
 footer {
     text-align: center;
-    background-color: #3700b3;
+    background-color: #3700b3; 
     color: white;
     padding: 20px;
     margin-top: 40px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px); /* Blur efekti */
 }
 
 footer p {
@@ -104,13 +110,14 @@ footer p {
 .page-content {
     background-color: #1f1f1f;
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 15px;
     margin-top: 40px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px); /* Blur efekti */
 }
 
 .page-content h2 {
-    color: #03dac5;
+    color: #03dac5; 
     font-size: 2rem;
     font-weight: 600;
     margin-bottom: 20px;
