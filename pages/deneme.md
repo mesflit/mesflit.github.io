@@ -32,7 +32,7 @@ Sıralı liste:
 
 ### Linkler
 
-[Mesflit'e Gitmek İçin Tıklayın](index.html)
+[Mesflit'e Gitmek İçin Tıklayın](./index.html)
 
 ---
 
