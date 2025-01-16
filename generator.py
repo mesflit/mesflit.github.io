@@ -27,7 +27,7 @@ PAGE_TEMPLATE = """
         {content}
     </main>
     <footer>
-        <a href="index.html">Mesflit Ana Sayfa</a>
+        <a href="../index.html">Mesflit'in Bloğu</a>
     </footer>
 </body>
 </html>
@@ -39,13 +39,13 @@ INDEX_TEMPLATE = """
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mesflit - Ana Sayfa</title>
+    <title>Mesflit'in Bloğu - Ana Sayfa</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <h1>Mesflit Blog</h1>
-        <p>Kendi içeriklerinizi burada keşfedin.</p>
+        <h1>Mesflit'in Bloğu</h1>
+        <p>Keşfedebileceğiniz Herşey.</p>
     </header>
     <main>
         <ul>
