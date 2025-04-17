@@ -25,9 +25,17 @@ jobs:
         run: |
           pip install markdown  # Markdown modülünü yükle
 
+      - name: Eski dosyaları sil
+        run: |
+          rm pages-html/*
+
       - name: Generate Blog Pages
         run: |
           python generator.py  # Python scriptini çalıştırarak HTML dosyalarını oluştur
+
+      - name: Copy font
+        run: |
+          cp WinkyRough-Regular.ttf pages-html/WinkyRough-Regular.ttf
 
       - name: Check for Changes
         run: |
