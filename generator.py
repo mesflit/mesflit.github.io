@@ -29,6 +29,7 @@ PAGE_TEMPLATE = """
     <footer>
         <a href="../index.html">Mesflit'in Bloğu</a>
     </footer>
+    <script src="scripts/copy.js"></script>
 </body>
 </html>
 """
@@ -55,6 +56,7 @@ INDEX_TEMPLATE = """
     <footer>
         <p>&copy; 2025 Mesflit. Tüm hakları saklıdır.</p>
     </footer>
+    <script src="scripts/copy.js"></script>
 </body>
 </html>
 """
