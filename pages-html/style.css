@@ -4,8 +4,13 @@
     box-sizing: border-box;
 }
 
+@font-face {
+    font-family: 'Winky Rough';
+    src: url('WinkyRough-Regular.ttf') format('truetype');
+}
+
 body {
-    font-family: 'Verdana', sans-serif;
+    font-family: 'Winky Rough', sans-serif;
     background-color: #121212;
     color: #fff;
     line-height: 1.6;
