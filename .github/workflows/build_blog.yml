@@ -1,4 +1,4 @@
-name: Build Mesflit Blog
+name: Build and Deploy Blog
 
 on:
   push:
@@ -16,15 +16,10 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2  # Reponun içeriğini çeker
 
-      - name: Pull latest changes
-        run: |
-          git pull origin main  # Uzak depodaki en son değişiklikleri al
-
-
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.12'  # Python 3.9 kullanılıyor
+          python-version: '3.12'  # Python 3.12 kullanılıyor
 
       - name: Install Dependencies
         run: |
@@ -34,12 +29,17 @@ jobs:
         run: |
           python generator.py  # Python scriptini çalıştırarak HTML dosyalarını oluştur
 
-      - name: Commit & Push Changes
+      - name: Check for Changes
+        run: |
+          git status
+          git diff --stat
+
+      - name: Commit and Push Changes
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # GITHUB_TOKEN kullanılıyor
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # GitHub token'ı kullanılıyor
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
-          git add -A
-          git diff --quiet || git commit -m "Update blog pages"  # Eğer değişiklik varsa commit yap
-          git push
+          git add -A  # Tüm dosyaları ekle
+          git commit -m "Update blog pages" || echo "No changes to commit"
+          git push https://github-actions:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main
