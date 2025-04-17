@@ -36,6 +36,8 @@ jobs:
       - name: Copy font
         run: |
           cp WinkyRough-Regular.ttf pages-html/WinkyRough-Regular.ttf
+          mkdir -p pages-html/scripts
+          cp scripts/* pages-html/scripts/
 
       - name: Check for Changes
         run: |
