@@ -36,5 +36,5 @@ jobs:
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
           git add -A
-          git commit -m "Update blog pages"
+          git diff --quiet || git commit -m "Update blog pages"  # Eğer değişiklik varsa commit yap
           git push
