@@ -27,7 +27,7 @@ jobs:
 
       - name: Eski dosyaları sil
         run: |
-          rm pages-html/*
+          rm -rf pages-html/*
 
       - name: Generate Blog Pages
         run: |
