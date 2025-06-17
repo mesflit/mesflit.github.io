@@ -45,6 +45,15 @@ Bunun için CMD veya terminali açmanız lazım
 Şimdi **PrismLauncher**'ı açıp hesap çevrimdışı hesap oluşturmanız gerekiyor.
 !!!Sakın "No Profile" hesabını silmeyin yoksa bypass çalışmaz!!!
 
+#### !!! Eğer Bu Adımlar İşe Yaramazsa Napıcaz? !!!
+
+PrismLauncher'ın forklarını deneyebilirsiniz.
+
+Forkların Listesine [buradan](https://github.com/PrismLauncher/PrismLauncher/forks) ulaşabilirsiniz.
+
+
+En Popüleri direkt offline hesap açmanıza yarıyor <[PrismLauncher-Cracked](https://github.com/Diegiwg/PrismLauncher-Cracked)>
+
 ## Son
 Bu konu bukadardı
 Takipte Kalın
