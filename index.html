@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>mesflit | Developer & Creator</title>
+    <title>mesflit | Developer & Open Source Creator</title>
     <!-- Google Fonts & Material Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -184,7 +184,7 @@
 <body>
 
     <div class="container">
-        <!-- Ana Profil Kartı -->
+        <!-- Main Profile Card -->
         <div class="card">
             <div class="profile-avatar">
                 <span class="material-icons" style="font-size: 45px;">terminal</span>
@@ -192,14 +192,14 @@
             <h1>mesflit</h1>
             <div class="tagline">System Developer & Open Source Enthusiast</div>
 
-            <!-- Hakkımda Bölümü -->
-            <h3><span class="material-icons">person</span> Hakkımda</h3>
+            <!-- About Me -->
+            <h3><span class="material-icons">person</span> About Me</h3>
             <p class="bio">
-                Selam! Ben mesflit. Linux ekosistemleri, sıfır sunuculu güvenli web mimarileri ve açık kaynaklı araçlar geliştiren bir yazılım meraklısıyım. Gizliliğe, minimalist tasarımlara ve uçtan uca şifrelemeye odaklanan projeler üretmeyi seviyorum.
+                Hello! I'm mesflit. A software enthusiast focused on Linux ecosystems, serverless secure web architectures, and open-source tools. I love building projects centered around privacy, minimalist design, and end-to-end encryption.
             </p>
 
-            <!-- Özel Uygulama Sabitlemesi (İstersen ekleyebilirsin) -->
-            <h3><span class="material-icons">star</span> Öne Çıkan Uygulama</h3>
+            <!-- Featured Application -->
+            <h3><span class="material-icons">star</span> Featured App</h3>
             <div class="projects-grid" style="margin-bottom: 1.5rem;">
                 <div class="project-item" style="border-color: var(--md-sys-color-primary); background: rgba(255,82,82,0.03);">
                     <div class="project-title">
@@ -207,24 +207,24 @@
                         <span style="font-size: 0.75rem; background: rgba(255,82,82,0.15); color: #ff5252; padding: 2px 8px; border-radius: 4px;">Zero-Knowledge</span>
                     </div>
                     <p class="project-desc">
-                        Sunucusuz, URL tabanlı senkronizasyon ve kurtarma anahtarı (Recovery Key) destekli ultra güvenli şifre yöneticisi.
+                        Serverless, URL-synced, and recovery-key protected ultra-secure password manager.
                     </p>
                     <div style="display: flex; gap: 0.5rem; margin-top: 0.5rem;">
-                        <a href="./voidvault.html" class="btn-link" style="padding: 0.4rem 0.9rem; font-size: 0.8rem; background-color: var(--md-sys-color-primary); color: #fff; border: none;">
-                            <span class="material-icons" style="font-size: 16px;">lock_open</span> Uygulamayı Aç
+                        <a href="./voidvault" class="btn-link" style="padding: 0.4rem 0.9rem; font-size: 0.8rem; background-color: var(--md-sys-color-primary); color: #fff; border: none;">
+                            <span class="material-icons" style="font-size: 16px;">lock_open</span> Open App
                         </a>
                     </div>
                 </div>
             </div>
 
-            <!-- Otomatik GitHub Repoları Bölümü -->
-            <h3><span class="material-icons">code</span> GitHub Repolarım</h3>
+            <!-- Dynamic GitHub Repositories -->
+            <h3><span class="material-icons">code</span> GitHub Repositories</h3>
             <div id="repoList" class="projects-grid">
-                <p style="color: #79747e; text-align: center; grid-column: 1/-1;">GitHub repoları yükleniyor...</p>
+                <p style="color: #79747e; text-align: center; grid-column: 1/-1;">Loading repositories...</p>
             </div>
 
-            <!-- Sosyal Medya ve Bağlantılar -->
-            <h3><span class="material-icons">share</span> Bağlantılar</h3>
+            <!-- Social Links & Connections -->
+            <h3><span class="material-icons">share</span> Connect</h3>
             <div class="social-links">
                 <a href="https://github.com/mesflit" target="_blank" class="btn-link">
                     <span class="material-icons" style="font-size: 18px;">code</span> GitHub
@@ -244,24 +244,39 @@
         async function fetchGitHubRepos() {
             const repoContainer = document.getElementById('repoList');
             try {
-                // GitHub API ile kullanıcının public repolarını çek (güncelleme tarihine göre sıralı)
-                const response = await fetch('https://api.github.com/users/mesflit/repos?sort=updated&per_page=6');
-                if (!response.ok) throw new Error('Repolar alınamadı');
+                let allRepos = [];
+                let page = 1;
+                let fetchMore = true;
+
+                // Loop through pages to fetch ALL repositories if they exceed 100
+                while (fetchMore) {
+                    const response = await fetch(`https://api.github.com/users/mesflit/repos?sort=updated&per_page=100&page=${page}`);
+                    if (!response.ok) throw new Error('Failed to fetch repositories');
+                    
+                    const repos = await response.json();
+                    if (repos.length > 0) {
+                        allRepos = allRepos.concat(repos);
+                        page++;
+                        if (repos.length < 100) {
+                            fetchMore = false; // Last page reached
+                        }
+                    } else {
+                        fetchMore = false;
+                    }
+                }
                 
-                const repos = await response.json();
-                
-                // Forklanmış repoları hariç tutmak istersen filtreleyebilirsin (opsiyonel)
-                const originalRepos = repos.filter(repo => !repo.fork);
+                // Filter out forked repositories (keeps only your original work)
+                const originalRepos = allRepos.filter(repo => !repo.fork);
 
                 if (originalRepos.length === 0) {
-                    repoContainer.innerHTML = '<p style="color: #79747e; text-align: center; grid-column: 1/-1;">Gösterilecek repo bulunamadı.</p>';
+                    repoContainer.innerHTML = '<p style="color: #79747e; text-align: center; grid-column: 1/-1;">No repositories found.</p>';
                     return;
                 }
 
                 repoContainer.innerHTML = '';
                 originalRepos.forEach(repo => {
-                    const desc = repo.description ? repo.description : 'Açıklama eklenmemiş.';
-                    const lang = repo.language ? repo.language : 'Genel';
+                    const desc = repo.description ? repo.description : 'No description provided.';
+                    const lang = repo.language ? repo.language : 'General';
                     
                     repoContainer.innerHTML += `
                         <div class="project-item">
@@ -275,7 +290,7 @@
                             <div class="project-meta">
                                 <span>⭐ ${repo.stargazers_count} &nbsp; 🍴 ${repo.forks_count}</span>
                                 <a href="${repo.html_url}" target="_blank" class="btn-link" style="padding: 0.3rem 0.7rem; font-size: 0.75rem;">
-                                    <span class="material-icons" style="font-size: 14px;">open_in_new</span> İncele
+                                    <span class="material-icons" style="font-size: 14px;">open_in_new</span> View
                                 </a>
                             </div>
                         </div>
@@ -283,7 +298,7 @@
                 });
 
             } catch (error) {
-                repoContainer.innerHTML = '<p style="color: #ff5252; text-align: center; grid-column: 1/-1;">GitHub repoları yüklenirken bir hata oluştu.</p>';
+                repoContainer.innerHTML = '<p style="color: #ff5252; text-align: center; grid-column: 1/-1;">Error loading GitHub repositories.</p>';
             }
         }
 
@@ -291,7 +306,6 @@
             return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
         }
 
-        // Sayfa yüklenince otomatik çalıştır
         window.addEventListener('DOMContentLoaded', fetchGitHubRepos);
     </script>
 </body>
