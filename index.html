@@ -99,7 +99,7 @@
             display: grid;
             grid-template-columns: 1fr;
             gap: 1rem;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             text-align: left;
         }
 
@@ -144,6 +144,21 @@
             color: #79747e;
         }
 
+        /* Sayfalama (Pagination) Alanı */
+        .pagination {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--md-sys-color-outline);
+        }
+
+        .page-info {
+            font-size: 0.85rem;
+            color: #b0b0b0;
+        }
+
         .social-links {
             display: flex;
             justify-content: center;
@@ -168,9 +183,16 @@
             transition: all 0.2s;
         }
 
-        button:hover, .btn-link:hover {
+        button:hover:not(:disabled), .btn-link:hover {
             background-color: rgba(255, 82, 82, 0.1);
             border-color: var(--md-sys-color-primary);
+        }
+
+        button:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            border-color: var(--md-sys-color-outline);
+            color: #79747e;
         }
 
         footer {
@@ -210,17 +232,28 @@
                         Serverless, URL-synced, and recovery-key protected ultra-secure password manager.
                     </p>
                     <div style="display: flex; gap: 0.5rem; margin-top: 0.5rem;">
-                        <a href="./voidvault" class="btn-link" style="padding: 0.4rem 0.9rem; font-size: 0.8rem; background-color: var(--md-sys-color-primary); color: #fff; border: none;">
+                        <a href="./voidvault.html" class="btn-link" style="padding: 0.4rem 0.9rem; font-size: 0.8rem; background-color: var(--md-sys-color-primary); color: #fff; border: none;">
                             <span class="material-icons" style="font-size: 16px;">lock_open</span> Open App
                         </a>
                     </div>
                 </div>
             </div>
 
-            <!-- Dynamic GitHub Repositories -->
+            <!-- Dynamic GitHub Repositories (5 per page) -->
             <h3><span class="material-icons">code</span> GitHub Repositories</h3>
             <div id="repoList" class="projects-grid">
                 <p style="color: #79747e; text-align: center; grid-column: 1/-1;">Loading repositories...</p>
+            </div>
+
+            <!-- Pagination Controls -->
+            <div class="pagination" id="paginationControls" style="display: none;">
+                <button id="prevBtn" onclick="changePage(-1)">
+                    <span class="material-icons" style="font-size: 16px;">chevron_left</span> Prev
+                </button>
+                <span class="page-info" id="pageInfo">Page 1 of 1</span>
+                <button id="nextBtn" onclick="changePage(1)">
+                    Next <span class="material-icons" style="font-size: 16px;">chevron_right</span>
+                </button>
             </div>
 
             <!-- Social Links & Connections -->
@@ -241,6 +274,10 @@
     </div>
 
     <script>
+        let allOriginalRepos = [];
+        let currentPage = 1;
+        const reposPerPage = 5;
+
         async function fetchGitHubRepos() {
             const repoContainer = document.getElementById('repoList');
             try {
@@ -248,7 +285,6 @@
                 let page = 1;
                 let fetchMore = true;
 
-                // Loop through pages to fetch ALL repositories if they exceed 100
                 while (fetchMore) {
                     const response = await fetch(`https://api.github.com/users/mesflit/repos?sort=updated&per_page=100&page=${page}`);
                     if (!response.ok) throw new Error('Failed to fetch repositories');
@@ -257,49 +293,82 @@
                     if (repos.length > 0) {
                         allRepos = allRepos.concat(repos);
                         page++;
-                        if (repos.length < 100) {
-                            fetchMore = false; // Last page reached
-                        }
+                        if (repos.length < 100) fetchMore = false;
                     } else {
                         fetchMore = false;
                     }
                 }
                 
-                // Filter out forked repositories (keeps only your original work)
-                const originalRepos = allRepos.filter(repo => !repo.fork);
+                // Filter out forks
+                allOriginalRepos = allRepos.filter(repo => !repo.fork);
 
-                if (originalRepos.length === 0) {
+                if (allOriginalRepos.length === 0) {
                     repoContainer.innerHTML = '<p style="color: #79747e; text-align: center; grid-column: 1/-1;">No repositories found.</p>';
                     return;
                 }
 
-                repoContainer.innerHTML = '';
-                originalRepos.forEach(repo => {
-                    const desc = repo.description ? repo.description : 'No description provided.';
-                    const lang = repo.language ? repo.language : 'General';
-                    
-                    repoContainer.innerHTML += `
-                        <div class="project-item">
-                            <div>
-                                <div class="project-title">
-                                    <span>${escapeHtml(repo.name)}</span>
-                                    <span style="font-size: 0.75rem; background: rgba(255,255,255,0.08); color: #b0b0b0; padding: 2px 8px; border-radius: 4px;">${escapeHtml(lang)}</span>
-                                </div>
-                                <p class="project-desc">${escapeHtml(desc)}</p>
-                            </div>
-                            <div class="project-meta">
-                                <span>⭐ ${repo.stargazers_count} &nbsp; 🍴 ${repo.forks_count}</span>
-                                <a href="${repo.html_url}" target="_blank" class="btn-link" style="padding: 0.3rem 0.7rem; font-size: 0.75rem;">
-                                    <span class="material-icons" style="font-size: 14px;">open_in_new</span> View
-                                </a>
-                            </div>
-                        </div>
-                    `;
-                });
+                renderRepos();
 
             } catch (error) {
                 repoContainer.innerHTML = '<p style="color: #ff5252; text-align: center; grid-column: 1/-1;">Error loading GitHub repositories.</p>';
             }
+        }
+
+        function renderRepos() {
+            const repoContainer = document.getElementById('repoList');
+            const paginationControls = document.getElementById('paginationControls');
+            const pageInfo = document.getElementById('pageInfo');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+
+            const totalPages = Math.ceil(allOriginalRepos.length / reposPerPage);
+            if (currentPage < 1) currentPage = 1;
+            if (currentPage > totalPages) currentPage = totalPages;
+
+            const start = (currentPage - 1) * reposPerPage;
+            const end = start + reposPerPage;
+            const currentRepos = allOriginalRepos.slice(start, end);
+
+            repoContainer.innerHTML = '';
+            currentRepos.forEach(repo => {
+                const desc = repo.description ? repo.description : 'No description provided.';
+                const lang = repo.language ? repo.language : 'General';
+                
+                repoContainer.innerHTML += `
+                    <div class="project-item">
+                        <div>
+                            <div class="project-title">
+                               <span>${escapeHtml(repo.name)}</span>
+                               <span style="font-size: 0.75rem; background: rgba(255,255,255,0.08); color: #b0b0b0; padding: 2px 8px; border-radius: 4px;">${escapeHtml(lang)}</span>
+                            </div>
+                            <p class="project-desc">${escapeHtml(desc)}</p>
+                        </div>
+                        <div class="project-meta">
+                            <span>⭐ ${repo.stargazers_count} &nbsp; 🍴 ${repo.forks_count}</span>
+                            <a href="${repo.html_url}" target="_blank" class="btn-link" style="padding: 0.3rem 0.7rem; font-size: 0.75rem;">
+                                <span class="material-icons" style="font-size: 14px;">open_in_new</span> View
+                            </a>
+                        </div>
+                    </div>
+                `;
+            });
+
+            // Update pagination UI
+            if (totalPages > 1) {
+                paginationControls.style.display = 'flex';
+                pageInfo.innerText = `Page ${currentPage} of ${totalPages}`;
+                prevBtn.disabled = currentPage === 1;
+                nextBtn.disabled = currentPage === totalPages;
+            } else {
+                paginationControls.style.display = 'none';
+            }
+        }
+
+        function changePage(direction) {
+            currentPage += direction;
+            renderRepos();
+            // Scroll slightly up to top of list for smooth transition
+            document.getElementById('repoList').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
 
         function escapeHtml(str) {
